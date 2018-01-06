@@ -4,17 +4,20 @@
  * and open the template in the editor.
  */
 package reversi.settings;
+import reversi.menu.Menu;
 
 /**
  *
  * @author michal
  */
 public class Ustawienia { 
-    private static int xLocation = 100;
+    
+    private static int xLocation = 600;
     private static int yLocation = 100;
     private static int width = 800;
     private static int height = 600;
     
+    public static Okno okno = new Okno();
 
     public static int getXLocation(){
         return xLocation;
@@ -42,5 +45,14 @@ public class Ustawienia {
         height = x;
     }
     
-    
+    public static void zmienRozmiarOkien(int x, int y){
+        setWidth(x);
+        setHeight(y);
+        Menu.okno.setSize(x, y);
+        Ustawienia.okno.setSize(x,y);
+        okno.changeButtonBounds();
+        okno.removeAll();
+        okno.repaint();
+    }
+
 }

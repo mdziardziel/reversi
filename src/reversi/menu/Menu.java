@@ -9,7 +9,14 @@ package reversi.menu;
  * @author michal
  */
 public class Menu {
-    public static void utworz() {
-        Okno o = new Okno();
-    }
+    public static final Okno okno = new Okno();
+//    public Menu(){
+//        o = new Okno();
+//    }
+//    public void dezaktywuj() {
+//        o.setVisible(false);
+//    }
+//    public void aktywuj() {
+//        o.setVisible(true);
+//    }
 }

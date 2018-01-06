@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package reversi.menu;
-import java.awt.FlowLayout;
-import reversi.settings.Ustawienia;
+package reversi.settings;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,12 +13,11 @@ import javax.swing.JPanel;
  * @author michal
  */
 public class Okno extends JFrame{
-    
+    JPanel przyciski;
     public Okno(){
-        super("Reversi - Menu");
+        super("Reversi - Ustwienia");
         
-        JPanel przyciski = new Przyciski(); 
-        //setLayout(new FlowLayout(FlowLayout.CENTER));
+        przyciski = new Przyciski(); 
         add(przyciski);
         
         //pack();
@@ -33,5 +30,10 @@ public class Okno extends JFrame{
         setVisible(false);
     }
 
+    public void changeButtonBounds(){
+        przyciski.repaint();
+        //przyciski = new Przyciski(); 
+        //this.add(przyciski);
+    }
     
 }

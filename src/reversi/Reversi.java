@@ -7,6 +7,7 @@ package reversi;
 import java.awt.Button;
 import java.awt.Frame;
 import reversi.menu.Menu;
+import reversi.settings.Ustawienia;
 
 /**
  *
@@ -18,7 +19,8 @@ public class Reversi {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Menu.utworz();
+        //Menu.okno.setVisible(true);
+        Ustawienia.okno.setVisible(true);
     }
     
 }
