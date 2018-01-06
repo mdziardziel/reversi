@@ -7,6 +7,7 @@ package reversi.menu;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import reversi.settings.Ustawienia;
+import reversi.multi.Multi;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,7 +38,7 @@ public class Przyciski extends JPanel implements ActionListener{
         addButton(button2,buttonXLocation,buttonYLocation+(buttonSpace+buttonHeight),buttonWidth,buttonHeight);
         addButton(button3,buttonXLocation,buttonYLocation+(buttonSpace+buttonHeight)*2,buttonWidth,buttonHeight);
         addButton(button4,buttonXLocation,buttonYLocation+(buttonSpace+buttonHeight)*3,buttonWidth,buttonHeight);
-
+        setBackground(reversi.settings.Ustawienia.getKolorOkna());
         
         
     }
@@ -57,7 +58,9 @@ public class Przyciski extends JPanel implements ActionListener{
             setBackground(Color.GREEN);
         }
         if(source == button2){
-            setBackground(Color.YELLOW);
+            Menu.okno.setVisible(false);
+            Multi.okno.setLocation(Menu.okno.getLocation());
+            Multi.okno.setVisible(true);
         }
         if(source == button3){
             Menu.okno.setVisible(false);

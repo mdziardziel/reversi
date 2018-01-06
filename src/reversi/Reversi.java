@@ -8,6 +8,7 @@ import java.awt.Button;
 import java.awt.Frame;
 import reversi.menu.Menu;
 import reversi.settings.Ustawienia;
+import reversi.multi.Multi;
 
 /**
  *
@@ -21,6 +22,7 @@ public class Reversi {
     public static void main(String[] args) {
         Menu.okno.setVisible(true);
         Ustawienia.okno.setVisible(false);
+        Multi.okno.setVisible(false);
     }
     
 }

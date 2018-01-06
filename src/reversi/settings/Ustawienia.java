@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package reversi.settings;
+import java.awt.Color;
 import reversi.menu.Menu;
+import reversi.multi.Multi;
 
 /**
  *
@@ -12,13 +14,27 @@ import reversi.menu.Menu;
  */
 public class Ustawienia { 
     
-    private static int xLocation = 600;
+    private static int xLocation = 200;
     private static int yLocation = 100;
-    private static int width = 800;
-    private static int height = 600;
+    private static int width = 1000;
+    private static int height = 800;
+    private static Color kolor1 = new Color(18, 55,23);
+    private static Color kolor2 = new Color(122, 55,155);
+    private static Color kolorOkna = new Color(0, 255,155);
     
     public static Okno okno = new Okno();
 
+    public static Color getKolorOkna(){
+        return kolorOkna;
+    }
+    public static Color getKolor1(){
+        return kolor1;
+    }
+    
+    public static Color getKolor2(){
+        return kolor2;
+    }
+    
     public static int getXLocation(){
         return xLocation;
     }
@@ -49,9 +65,11 @@ public class Ustawienia {
         setWidth(x);
         setHeight(y);
         Menu.okno.setSize(x, y);
-        Ustawienia.okno.changePanelBounds();
+        Menu.okno.changePanelBounds();
         Ustawienia.okno.setSize(x,y);
         Ustawienia.okno.changePanelBounds();
+        Multi.okno.setSize(x,y);
+        Multi.okno.changePanelBounds();
         //okno.removeAll();
         //okno.repaint();
     }

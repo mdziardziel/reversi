@@ -46,6 +46,7 @@ import reversi.menu.Menu;
         
         addField(field3,buttonXLocation,buttonYLocation+(buttonSpace+buttonHeight)*3,buttonWidth/3,buttonHeight);
         addField(field4,buttonXLocation+(buttonWidth/3)*2,buttonYLocation+(buttonSpace+buttonHeight)*3,buttonWidth/3,buttonHeight);
+        setBackground(reversi.settings.Ustawienia.getKolorOkna());
         
     }
     
