@@ -19,8 +19,8 @@ public class Reversi {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //Menu.okno.setVisible(true);
-        Ustawienia.okno.setVisible(true);
+        Menu.okno.setVisible(true);
+        Ustawienia.okno.setVisible(false);
     }
     
 }

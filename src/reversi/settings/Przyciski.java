@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import reversi.menu.Menu;
 
  class Przyciski extends JPanel implements ActionListener{
     private final int numberOfButtons = 5;
@@ -76,13 +77,16 @@ import javax.swing.JTextField;
         if(source == button1){
             int x = Integer.parseInt(field1.getText());
             int y = Integer.parseInt(field2.getText());
-            Ustawienia.zmienRozmiarOkien(x, y);
+            if(x!= Ustawienia.getWidth() || y != Ustawienia.getHeight())
+                Ustawienia.zmienRozmiarOkien(x, y);
         }
         if(source == button2){
             setBackground(Color.YELLOW);
         }
         if(source == button3){
-            setBackground(Color.BLUE);
+            Ustawienia.okno.setVisible(false);
+            Menu.okno.setLocation(Ustawienia.okno.getLocation());
+            Menu.okno.setVisible(true);
         }  
         
     }

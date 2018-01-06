@@ -10,13 +10,4 @@ package reversi.menu;
  */
 public class Menu {
     public static final Okno okno = new Okno();
-//    public Menu(){
-//        o = new Okno();
-//    }
-//    public void dezaktywuj() {
-//        o.setVisible(false);
-//    }
-//    public void aktywuj() {
-//        o.setVisible(true);
-//    }
 }

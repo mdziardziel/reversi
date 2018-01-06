@@ -60,10 +60,12 @@ public class Przyciski extends JPanel implements ActionListener{
             setBackground(Color.YELLOW);
         }
         if(source == button3){
-            setBackground(Color.BLUE);
+            Menu.okno.setVisible(false);
+            Ustawienia.okno.setLocation(Menu.okno.getLocation());
+            Ustawienia.okno.setVisible(true);
         }
         if(source == button4){
-            setBackground(Color.RED);
+            System.exit(0);
         }
         
     }

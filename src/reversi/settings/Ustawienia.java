@@ -49,10 +49,11 @@ public class Ustawienia {
         setWidth(x);
         setHeight(y);
         Menu.okno.setSize(x, y);
+        Ustawienia.okno.changePanelBounds();
         Ustawienia.okno.setSize(x,y);
-        okno.changeButtonBounds();
-        okno.removeAll();
-        okno.repaint();
+        Ustawienia.okno.changePanelBounds();
+        //okno.removeAll();
+        //okno.repaint();
     }
 
 }

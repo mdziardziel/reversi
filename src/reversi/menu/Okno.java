@@ -15,11 +15,11 @@ import javax.swing.JPanel;
  * @author michal
  */
 public class Okno extends JFrame{
-    
+    private JPanel przyciski;
     public Okno(){
         super("Reversi - Menu");
         
-        JPanel przyciski = new Przyciski(); 
+        przyciski = new Przyciski(); 
         //setLayout(new FlowLayout(FlowLayout.CENTER));
         add(przyciski);
         
@@ -31,6 +31,13 @@ public class Okno extends JFrame{
         setResizable(false);
         
         setVisible(false);
+    }
+    
+    public void changePanelBounds(){
+        this.remove(przyciski);
+        this.repaint();
+        przyciski = new Przyciski();
+        this.add(przyciski);
     }
 
     

@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  * @author michal
  */
 public class Okno extends JFrame{
-    JPanel przyciski;
+    private JPanel przyciski;
     public Okno(){
         super("Reversi - Ustwienia");
         
@@ -30,10 +30,11 @@ public class Okno extends JFrame{
         setVisible(false);
     }
 
-    public void changeButtonBounds(){
-        przyciski.repaint();
-        //przyciski = new Przyciski(); 
-        //this.add(przyciski);
+    public void changePanelBounds(){
+        this.remove(przyciski);
+        this.repaint();
+        przyciski = new Przyciski();
+        this.add(przyciski);
     }
     
 }
