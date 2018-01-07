@@ -69,10 +69,10 @@ public class Pionki extends JComponent{
     }
     
     public static int XToInt(int x){
-        return (int)Math.floor((x-poXs-5*jeds)/jeds);
+        return (int)Math.floor(x/jeds);
     }
     public static int YToInt(int y){
-        return (int)Math.floor((y-poYs-5*jeds)/jeds);
+        return (int)Math.floor(y/jeds);
     }
     
 }

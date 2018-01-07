@@ -17,19 +17,37 @@ import reversi.settings.Ustawienia;
  * @author michal
  */
 public class Mysz extends JComponent implements MouseListener{
+    private int jednostka;
+    private int ile = 15;
+    private int poczatekX, poczatekY;
     Mysz(){
+        if(Ustawienia.getWidth() < Ustawienia.getHeight()){
+            jednostka = Ustawienia.getWidth()/(ile);
+        }else{
+            jednostka = Ustawienia.getHeight()/(ile);
+        }
+        poczatekX = (Ustawienia.getWidth()-jednostka*(ile))/2;
+        poczatekY = (Ustawienia.getHeight()-jednostka*(ile))/2;
         addMouseListener(this);
         setLocation(0, 0);
         setSize(Ustawienia.getWidth(),Ustawienia.getHeight());  
+        setLocation(poczatekX+jednostka*5, poczatekY+jednostka*5);
+        setSize(jednostka*8,jednostka*8); 
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        int x = reversi.multi.Pionki.XToInt(e.getX());
-        int y = reversi.multi.Pionki.YToInt(e.getY());
-        //System.out.println(x + " " + y);
-        //System.out.println(reversi.multi.Pionki.XToInt(x) + " " + reversi.multi.Pionki.YToInt(y));
-        if(reversi.multi.Silnik.sprawdzRuch(x, y)) reversi.multi.Silnik.zmiana();
+        //System.out.println(e.getX() + " " + e.getY());
+        int x = (int)Math.floor(e.getX()/jednostka);
+        int y = (int)Math.floor(e.getY()/jednostka);
+        if((x>=0 && x <8)&& (y>=0 && y < 8)){
+            if(reversi.multi.Silnik.sprawdzRuch(x, y)) reversi.multi.Silnik.zmiana();
+            if(reversi.multi.Silnik.ilePionkow(0)==0){
+                Multi.okno.setVisible(false);
+                reversi.koniec.Koniec.okno.setLocation(Multi.okno.getLocation());
+                reversi.koniec.Koniec.okno.setVisible(true);
+            }
+        }
     }
 
     @Override

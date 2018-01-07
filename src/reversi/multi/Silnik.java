@@ -24,8 +24,22 @@ public class Silnik {
         tabela[3][3] = 2;
         tabela[4][4] = 2;
         tabela[4][3] = 1;
+        
+        ruch = 1;
+        przeciwnik = 2;
     }
     
+    
+    
+    public static int ilePionkow(int p){
+        int licznik = 0;
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; j < 8; j++){
+                if(tabela[i][j] == p) licznik++;
+            }
+        }
+        return licznik;
+    }
     
     
     private static boolean zawiera(int p1, int p2, int pp){
@@ -149,7 +163,7 @@ public class Silnik {
         }
         
         //prawo gora
-        i = x + 2; j = j - 2;
+        i = x + 2; j = y - 2;
         while(i<8 && j >=0){
             if(tabela[j+1][i-1]==0 || tabela[j+1][i-1]==ruch) break;
             if(tabela[j][i]== 0) break;
@@ -162,7 +176,7 @@ public class Silnik {
         }
         
         //prawo dol
-        i = x + 2; j = y - 2;
+        i = x + 2; j = y + 2;
         while(i < 8 && j < 8){
             if(tabela[j-1][i-1]==0 || tabela[j-1][i-1]==ruch) break;
             if(tabela[j][i]== 0) break;
@@ -187,6 +201,14 @@ public class Silnik {
     
     public static void setRuch(int x){
         ruch = x;
+    }
+    
+    public static int getPrzeciwnik(){
+        return przeciwnik;
+    }
+    
+    public static void setPrzeciwnik(int x){
+        przeciwnik = x;
     }
     
     public static int[][] copyTabela(){
