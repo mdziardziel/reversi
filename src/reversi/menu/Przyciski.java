@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import reversi.multi.Single;
 
 /**
  *
@@ -55,9 +56,13 @@ public class Przyciski extends JPanel implements ActionListener{
         Object source = e.getSource();
         
         if(source == button1){
-            setBackground(Color.GREEN);
+            reversi.multi.Silnik.reset();
+            Menu.okno.setVisible(false);
+            Single.okno.setLocation(Menu.okno.getLocation());
+            Single.okno.setVisible(true);
         }
         if(source == button2){
+            reversi.multi.Silnik.reset();
             Menu.okno.setVisible(false);
             Multi.okno.setLocation(Menu.okno.getLocation());
             Multi.okno.setVisible(true);

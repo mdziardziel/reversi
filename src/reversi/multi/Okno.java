@@ -6,8 +6,10 @@
 package reversi.multi;
 
 import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import reversi.settings.Ustawienia;
 
@@ -22,8 +24,21 @@ public class Okno extends JFrame{
     private JComponent mysz;
     private JPanel ruch;
     private JComponent przyciski;
-    public Okno(){
-        super("Reversi - Multiplayer");
+    private JComponent napisy;
+    
+    private JLabel wynik1;
+    private JLabel wynik2;
+    
+    int jednostka;
+    int ile = 15;
+    public Okno(boolean multi){
+        super("Reversi - Gra");
+        
+        if(Ustawienia.getWidth() < Ustawienia.getHeight()){
+            jednostka = Ustawienia.getWidth()/(ile);
+        }else{
+            jednostka = Ustawienia.getHeight()/(ile);
+        }
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);      
         setLocation(Ustawienia.getXLocation(), Ustawienia.getYLocation());
@@ -32,14 +47,22 @@ public class Okno extends JFrame{
         
         plansza = new Plansza();
         pionki = new Pionki();
-        mysz = new Mysz();
+        mysz = new Mysz(multi);
         ruch = new Ruch();
-        przyciski = new Przyciski();
+        przyciski = new Przyciski(multi);
+        napisy = new Napisy();
         
+        
+        wynik1 = Napisy.dodajNapis(Silnik.ilePionkow(1)+"", 5,0,jednostka*2, jednostka , jednostka, reversi.settings.Ustawienia.getKolor1());
+        wynik2 = Napisy.dodajNapis(Silnik.ilePionkow(2)+"", jednostka*8 + 5,0,jednostka*2, jednostka , jednostka, reversi.settings.Ustawienia.getKolor2());
+        
+        napisy.add(wynik1);
+        napisy.add(wynik2);
         
         add(mysz);
         
         add(ruch);
+        add(napisy);
         add(przyciski);
         add(pionki);
         
@@ -64,7 +87,12 @@ public class Okno extends JFrame{
     }
     
     public void resetPionkow(){
-        pionki = new Pionki();
+        //remove(napisy);
+        //napisy = new Napisy();
+        wynik1.setText(Silnik.ilePionkow(1)+"");
+        wynik2.setText(Silnik.ilePionkow(2)+"");
+        //add(napisy);
+        //pionki = new Pionki();
         this.repaint();
     }
 }

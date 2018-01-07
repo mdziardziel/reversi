@@ -6,9 +6,11 @@
 package reversi;
 import java.awt.Button;
 import java.awt.Frame;
+import reversi.koniec.Koniec;
 import reversi.menu.Menu;
 import reversi.settings.Ustawienia;
 import reversi.multi.Multi;
+import reversi.multi.Single;
 
 /**
  *
@@ -25,6 +27,7 @@ public class Reversi {
         Menu.okno.setVisible(true);
         Ustawienia.okno.setVisible(false);
         Multi.okno.setVisible(false);
+        Single.okno.setVisible(false);
     }
     
 }

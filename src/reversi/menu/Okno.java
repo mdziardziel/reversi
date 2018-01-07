@@ -8,6 +8,7 @@ import java.awt.FlowLayout;
 import reversi.settings.Ustawienia;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -24,6 +25,8 @@ public class Okno extends JFrame{
         add(przyciski);
         
         //pack();
+        
+
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);      
         setLocation(Ustawienia.getXLocation(), Ustawienia.getYLocation());

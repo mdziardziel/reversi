@@ -20,7 +20,9 @@ public class Mysz extends JComponent implements MouseListener{
     private int jednostka;
     private int ile = 15;
     private int poczatekX, poczatekY;
-    Mysz(){
+    boolean multi;
+    Mysz(boolean m){
+        multi = m;
         if(Ustawienia.getWidth() < Ustawienia.getHeight()){
             jednostka = Ustawienia.getWidth()/(ile);
         }else{
@@ -41,12 +43,15 @@ public class Mysz extends JComponent implements MouseListener{
         int x = (int)Math.floor(e.getX()/jednostka);
         int y = (int)Math.floor(e.getY()/jednostka);
         if((x>=0 && x <8)&& (y>=0 && y < 8)){
-            if(reversi.multi.Silnik.sprawdzRuch(x, y)) reversi.multi.Silnik.zmiana();
-            if(reversi.multi.Silnik.ilePionkow(0)==0){
-                Multi.okno.setVisible(false);
-                reversi.koniec.Koniec.okno.setLocation(Multi.okno.getLocation());
-                reversi.koniec.Koniec.okno.setVisible(true);
-            }
+            if(reversi.multi.Silnik.sprawdzRuch(x, y, true)) {
+                reversi.multi.Silnik.zmiana();
+                Silnik.koniecGry();
+                if(!multi) {
+                    Silnik.ruchKomputera();
+                    reversi.multi.Silnik.zmiana();
+                    Silnik.koniecGry();
+                }            
+            }     
         }
     }
 

@@ -27,6 +27,8 @@ public class Silnik {
         
         ruch = 1;
         przeciwnik = 2;
+        
+        Multi.okno.resetPionkow();
     }
     
     
@@ -82,13 +84,29 @@ public class Silnik {
         przeciwnik = pom;
         reversi.multi.Multi.okno.changeKolorRuch(ruch);
         reversi.multi.Multi.okno.resetPionkow();
+        reversi.multi.Single.okno.changeKolorRuch(ruch);
+        reversi.multi.Single.okno.resetPionkow();
     }
     
     
+    public static void koniecGry(){
+        if(reversi.multi.Silnik.ilePionkow(0)==0 || 
+                reversi.multi.Silnik.ilePionkow(1)==0 || 
+                reversi.multi.Silnik.ilePionkow(2)==0){
+            reversi.koniec.Koniec.okno.setLocation(Multi.okno.getLocation());
+            reversi.koniec.Koniec.okno.zmienNapis();
+            reversi.koniec.Koniec.okno.setVisible(true);
+        } 
+    }
+    
+    public static int ktoWygral(){
+        if(ilePionkow(1)>ilePionkow(2))return 1;
+        else if(ilePionkow(1)<ilePionkow(2)) return 2;
+        else return 3;
+    }
     
     
-    
-    public static boolean sprawdzRuch(int x, int y){
+    public static boolean sprawdzRuch(int x, int y, boolean s){
         boolean ret = false;
         if(tabela[y][x] > 0 ) return false;
         
@@ -97,7 +115,7 @@ public class Silnik {
             if(tabela[i+1][x]==0 || tabela[i+1][x]==ruch) break;
             if(tabela[i][x]== 0) break;
             if(tabela[i][x]== ruch){
-                koloruj(x,y,x,i);
+                if(s)koloruj(x,y,x,i);
                 ret = true;
                 break;
             }
@@ -107,7 +125,7 @@ public class Silnik {
             if(tabela[i-1][x]==0 || tabela[i-1][x]==ruch) break;
             if(tabela[i][x]== 0) break;
             if(tabela[i][x]== ruch){
-                koloruj(x,y,x,i);
+                if(s)koloruj(x,y,x,i);
                 ret = true;
                 break;
             }
@@ -117,7 +135,7 @@ public class Silnik {
             if(tabela[y][i-1]==0 || tabela[y][i-1]==ruch) break;
             if(tabela[y][i]== 0) break;
             if(tabela[y][i]== ruch){
-                koloruj(x,y,i,y);
+                if(s)koloruj(x,y,i,y);
                 ret = true;
                 break;
             }
@@ -127,7 +145,7 @@ public class Silnik {
             if(tabela[y][i+1]==0 || tabela[y][i+1]==ruch) break;
             if(tabela[y][i]== 0) break;
             if(tabela[y][i]== ruch){
-                koloruj(x,y,i,y);
+                if(s)koloruj(x,y,i,y);
                 ret = true;
                 break;
             }
@@ -142,7 +160,7 @@ public class Silnik {
             if(tabela[j+1][i+1]==0 || tabela[j+1][i+1]==ruch) break;
             if(tabela[j][i]== 0) break;
             if(tabela[j][i]== ruch){
-                koloruj(x,y,i,j);
+                if(s)koloruj(x,y,i,j);
                 ret = true;
                 break;
             }
@@ -155,7 +173,7 @@ public class Silnik {
             if(tabela[j-1][i+1]==0 || tabela[j-1][i+1]==ruch) break;
             if(tabela[j][i]== 0) break;
             if(tabela[j][i]== ruch){
-                koloruj(x,y,i,j);
+                if(s)koloruj(x,y,i,j);
                 ret = true;
                 break;
             }
@@ -168,7 +186,7 @@ public class Silnik {
             if(tabela[j+1][i-1]==0 || tabela[j+1][i-1]==ruch) break;
             if(tabela[j][i]== 0) break;
             if(tabela[j][i]== ruch){
-                koloruj(x,y,i,j);
+                if(s)koloruj(x,y,i,j);
                 ret = true;
                 break;
             }
@@ -181,7 +199,7 @@ public class Silnik {
             if(tabela[j-1][i-1]==0 || tabela[j-1][i-1]==ruch) break;
             if(tabela[j][i]== 0) break;
             if(tabela[j][i]== ruch){
-                koloruj(x,y,i,j);
+                if(s)koloruj(x,y,i,j);
                 ret = true;
                 break;
             }
@@ -193,6 +211,27 @@ public class Silnik {
     
     
     
+    public boolean jestRuch(){
+        boolean bol = false;
+        for(int i = 0; i < 8; i ++){
+            for(int j = 0; j < 8; j++){
+                bol = sprawdzRuch(j,i,false);
+            }
+        }
+        return bol;
+    }
+    
+    public static void ruchKomputera(){
+        boolean z = false;
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; j < 8; j++){
+                z = sprawdzRuch(i,j,true);
+                if(z==true) break;
+            }
+            if(z == true)break;
+        }
+        if(!z) zmiana();
+    }
     
     
     public static int getRuch(){

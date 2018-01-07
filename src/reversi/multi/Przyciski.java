@@ -25,8 +25,10 @@ public class Przyciski extends JComponent implements ActionListener{
     private JButton button2 = new JButton("Poddaj ruch");
     private JButton button3 = new JButton("Od nowa");
     private JButton button4 = new JButton("Minutnik");
+    private boolean multi;
     
-    public Przyciski() {
+    public Przyciski(boolean m) {
+        multi = m;
         if(Ustawienia.getWidth() < Ustawienia.getHeight()){
             jednostka = Ustawienia.getWidth()/(ile);
         }else{
@@ -63,6 +65,11 @@ public class Przyciski extends JComponent implements ActionListener{
         }
         if(source == button2){
             Silnik.zmiana();
+            if(!multi){
+                Silnik.ruchKomputera();
+                reversi.multi.Silnik.zmiana();
+                Silnik.koniecGry();
+            }
         }
         if(source == button3){
             Silnik.reset();
