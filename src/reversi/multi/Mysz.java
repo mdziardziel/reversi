@@ -25,8 +25,11 @@ public class Mysz extends JComponent implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
+        int x = reversi.multi.Pionki.XToInt(e.getX());
+        int y = reversi.multi.Pionki.YToInt(e.getY());
+        //System.out.println(x + " " + y);
+        //System.out.println(reversi.multi.Pionki.XToInt(x) + " " + reversi.multi.Pionki.YToInt(y));
+        if(reversi.multi.Silnik.sprawdzRuch(x, y)) reversi.multi.Silnik.zmiana();
     }
 
     @Override

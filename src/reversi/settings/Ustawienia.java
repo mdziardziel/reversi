@@ -24,6 +24,7 @@ public class Ustawienia {
     
     public static Okno okno = new Okno();
 
+    
     public static Color getKolorOkna(){
         return kolorOkna;
     }

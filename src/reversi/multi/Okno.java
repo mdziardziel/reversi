@@ -43,9 +43,22 @@ public class Okno extends JFrame{
     }
 
     public void changePanelBounds(){
-        this.remove(plansza);
-        this.repaint();
+        //this.remove(plansza);
+        //this.repaint();
         plansza = new Plansza();
-        this.add(plansza);
-    }   
+        //this.add(plansza);
+        this.repaint();
+    }
+    
+    public void changeKolorRuch(int x){
+        if(x == 1)
+            ruch.setBackground(reversi.settings.Ustawienia.getKolor1());
+        else
+            ruch.setBackground(reversi.settings.Ustawienia.getKolor2());
+    }
+    
+    public void resetPionkow(){
+        pionki = new Pionki();
+        this.repaint();
+    }
 }
