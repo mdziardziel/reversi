@@ -40,10 +40,21 @@ public class Pionki extends JComponent{
     protected void paintComponent(Graphics g) {
 	super.paintComponent(g);
 	Graphics2D g2d = (Graphics2D) g;
-        
+        int tabela[][] = reversi.multi.Silnik.getTabela();
+        int q = -1;
         for(int i = poczatekX+jednostka*5+(jednostka-rPionka)/2; i< poczatekX+jednostka*13; i+=jednostka){
+            q++;
+            int z = -1;
             for(int j = poczatekY+jednostka*5+(jednostka-rPionka)/2; j< poczatekY+jednostka*13; j+=jednostka){
-                g2d.fillOval(i, j, rPionka, rPionka);
+                z++;
+                if(tabela[q][z] == 0) continue;
+                else if(tabela[q][z] == 1){
+                    g2d.setColor(reversi.settings.Ustawienia.getKolor1());
+                    g2d.fillOval(i, j, rPionka, rPionka);
+                }else if(tabela[q][z] == 2){
+                    g2d.setColor(reversi.settings.Ustawienia.getKolor2());
+                    g2d.fillOval(i, j, rPionka, rPionka);
+                }else System.out.println("Zła wartość w tabeli"); 
             }
         }
         

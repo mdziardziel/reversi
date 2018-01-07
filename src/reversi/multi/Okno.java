@@ -19,6 +19,8 @@ public class Okno extends JFrame{
     //private JPanel przyciski;
     private JPanel plansza;
     private JComponent pionki;
+    private JComponent mysz;
+    private JPanel ruch;
     public Okno(){
         super("Reversi - Multiplayer");
 
@@ -29,10 +31,13 @@ public class Okno extends JFrame{
         
         plansza = new Plansza();
         pionki = new Pionki();
-
+        mysz = new Mysz();
+        ruch = new Ruch();
+        
+        add(mysz);
+        add(ruch);
         add(pionki);
         add(plansza);
-        
         
         setVisible(false);
     }

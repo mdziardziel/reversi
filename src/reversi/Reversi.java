@@ -20,6 +20,8 @@ public class Reversi {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        reversi.multi.Silnik.reset();
+        
         Menu.okno.setVisible(true);
         Ustawienia.okno.setVisible(false);
         Multi.okno.setVisible(false);
