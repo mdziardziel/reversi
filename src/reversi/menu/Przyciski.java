@@ -4,14 +4,16 @@
  * and open the template in the editor.
  */
 package reversi.menu;
-import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import reversi.settings.Ustawienia;
 import reversi.multi.Multi;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import reversi.multi.Single;
 
@@ -19,7 +21,7 @@ import reversi.multi.Single;
  *
  * @author michal
  */
-public class Przyciski extends JPanel implements ActionListener{
+public class Przyciski extends JComponent implements ActionListener{
     private final int numberOfButtons = 4;
     private final int buttonWidth = (int)(Ustawienia.getWidth()/3);
     private final int buttonHeight = (int)(Ustawienia.getHeight()/(numberOfButtons*2 + 1));
@@ -32,22 +34,31 @@ public class Przyciski extends JPanel implements ActionListener{
     private JButton button4 = new JButton("wyjście");
     
     public Przyciski() {
-        setLocation(Ustawienia.getXLocation(), Ustawienia.getYLocation());
+        //setLocation(Ustawienia.getXLocation(), Ustawienia.getYLocation());
+        setLocation(0,0);
         setSize(Ustawienia.getWidth(),Ustawienia.getHeight()); 
         setLayout(null);
         addButton(button1,buttonXLocation,buttonYLocation,buttonWidth,buttonHeight);
         addButton(button2,buttonXLocation,buttonYLocation+(buttonSpace+buttonHeight),buttonWidth,buttonHeight);
         addButton(button3,buttonXLocation,buttonYLocation+(buttonSpace+buttonHeight)*2,buttonWidth,buttonHeight);
         addButton(button4,buttonXLocation,buttonYLocation+(buttonSpace+buttonHeight)*3,buttonWidth,buttonHeight);
-        setBackground(reversi.settings.Ustawienia.getKolorOkna());
+        //setBackground(reversi.settings.Ustawienia.getKolorOkna());
         
         
     }
-    
+        @Override
+    protected void paintComponent(Graphics g) {
+	super.paintComponent(g);
+	Graphics2D g2d = (Graphics2D) g;
+        
+        g.setColor(Ustawienia.getKolorOkna());
+        g.fill3DRect(buttonXLocation - buttonHeight,buttonYLocation-buttonSpace/2,buttonWidth+buttonHeight*2,buttonHeight*(numberOfButtons)*2,true);
+    }
 
     public void addButton(JButton button, int xL, int xY,int bW,int bH){
         button.setBounds(xL,xY,bW, bH);
         button.addActionListener(this);
+        button.setBackground(reversi.settings.Ustawienia.getButtonKolor());
         add(button);
     }
     

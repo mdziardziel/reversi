@@ -58,6 +58,7 @@ public class Przyciski extends JComponent implements ActionListener{
     public void addButton(JButton button, int xL, int xY,int bW,int bH){
         button.setBounds(xL,xY,bW, bH);
         button.addActionListener(this);
+        button.setBackground(reversi.settings.Ustawienia.getButtonKolor());
         add(button);
     }
     

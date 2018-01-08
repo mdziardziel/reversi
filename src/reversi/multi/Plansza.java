@@ -12,17 +12,18 @@ import java.awt.geom.Rectangle2D;
 import javax.swing.JPanel;
 import reversi.settings.Ustawienia;
 import java.awt.Color;
+import javax.swing.JComponent;
 
 /**
  *
  * @author michal
  */
-public class Plansza extends JPanel{
+public class Plansza extends JComponent{
     private int jednostka;
     private int poczatekX;
     private int poczatekY;
     private int ile = 15;
-    private Color kolorStolu = new Color(102,101,71);
+    private Color kolorStolu = Ustawienia.getKolorOkna();//new Color(102,101,71);
     private Color kolorLicznika = new Color(23,0,0);
     private Color kolorRamek = new Color(6,10,13);
     private Color kolorPlanszy = new Color(214,188,111);
@@ -73,7 +74,7 @@ public class Plansza extends JPanel{
         
         //lewy panel
         g.setColor(kolorStolu);
-        g.fill3DRect(poczatekX+jednostka, poczatekY+jednostka*4, 2*jednostka, 10*jednostka,true);
+        //g.fill3DRect(poczatekX+jednostka, poczatekY+jednostka*4, 2*jednostka, 10*jednostka,true);
         
         
         g2d.setColor(kolorRamek);

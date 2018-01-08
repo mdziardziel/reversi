@@ -17,12 +17,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import reversi.menu.Menu;
 
- class Przyciski extends JPanel implements ActionListener{
+ class Przyciski extends JComponent implements ActionListener{
     private final int numberOfButtons = 7;
     private final int buttonWidth = (int)(Ustawienia.getWidth()/3);
     private final int buttonHeight = (int)(Ustawienia.getHeight()/(numberOfButtons*2 + 1));
@@ -41,7 +42,7 @@ import reversi.menu.Menu;
     JRadioButton radio3 = new JRadioButton();
     
     public Przyciski() {
-        setLocation(Ustawienia.getXLocation(), Ustawienia.getYLocation());
+        setLocation(0, buttonSpace);
         setSize(Ustawienia.getWidth(),Ustawienia.getHeight()); 
         setLayout(null);   
         addButton(button1,buttonXLocation,buttonYLocation,buttonWidth,buttonHeight);
@@ -66,11 +67,13 @@ import reversi.menu.Menu;
         
     }
     
-        @Override
+    @Override
     protected void paintComponent(Graphics g) {
 	super.paintComponent(g);
 	Graphics2D g2d = (Graphics2D) g;
         
+        g.setColor(Ustawienia.getKolorOkna());
+        g.fill3DRect(buttonXLocation - buttonHeight,buttonYLocation-buttonSpace,buttonWidth+buttonHeight*2,buttonHeight*(numberOfButtons-1)*2+buttonSpace,true);
 
         g.setColor(Ustawienia.getkolorU1());
         g.fill3DRect(buttonXLocation + buttonHeight,buttonYLocation+(buttonSpace+buttonHeight)*3,buttonHeight,buttonHeight,true);
@@ -91,10 +94,13 @@ import reversi.menu.Menu;
     }
     
     
+    
+    
 
     public void addButton(JButton button, int xL, int xY,int bW,int bH){
         button.setBounds(xL,xY,bW, bH);
         button.addActionListener(this);
+        button.setBackground(reversi.settings.Ustawienia.getButtonKolor());
         add(button);
     }
     

@@ -31,6 +31,7 @@ public class Reversi {
         Ustawienia.okno.setVisible(false);
         Multi.okno.setVisible(false);
         Single.okno.setVisible(false);
+          //reversi.koniec.Koniec.okno.setVisible(true);
     }
     
 }

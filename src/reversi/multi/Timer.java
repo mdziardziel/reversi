@@ -27,6 +27,10 @@ public class Timer implements Runnable{
     public static boolean stoper1 = false;
     public static boolean stoper2 = false;
     
+    public long getTime(){
+        return time;
+    }
+    
     public Timer(){
         startTime = System.currentTimeMillis();
     }

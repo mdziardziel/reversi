@@ -30,11 +30,17 @@ public class Ustawienia {
     private static Color kolorU5 = new Color(0, 180,145);
     private static Color kolorU6 = new Color(255, 100,0);
     
+    private static Color buttonKolor = new Color(255,226,138);
+    
     private static Color kolorOkna = new Color(111,203,159);
     private static Color kolorCyfr = new Color(255,255,255);
     
     public static Okno okno = new Okno();
 
+    public static Color getButtonKolor(){
+        return buttonKolor;
+    }
+    
     public static Color getkolorU1(){
         return kolorU1;
     }

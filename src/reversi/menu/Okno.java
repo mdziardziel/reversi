@@ -5,6 +5,7 @@
  */
 package reversi.menu;
 import java.awt.FlowLayout;
+import javax.swing.JComponent;
 import reversi.settings.Ustawienia;
 
 import javax.swing.JFrame;
@@ -16,14 +17,18 @@ import javax.swing.JPanel;
  * @author michal
  */
 public class Okno extends JFrame{
-    private JPanel przyciski;
+    private JComponent przyciski;
+    private JComponent naptlo;
+    public String txt = "Reversi";
     public Okno(){
         super("Reversi - Menu");
         
-        przyciski = new Przyciski(); 
+        przyciski = new Przyciski();
+        
         //setLayout(new FlowLayout(FlowLayout.CENTER));
         add(przyciski);
-        
+        naptlo = new reversi.koniec.Napis("Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi");
+        add(naptlo);
         //pack();
         
 

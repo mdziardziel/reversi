@@ -19,7 +19,7 @@ import reversi.settings.Ustawienia;
  */
 public class Okno extends JFrame{
     //private JPanel przyciski;
-    private JPanel plansza;
+    private JComponent plansza;
     private JComponent pionki;
     private JComponent mysz;
     private JComponent ruch;
@@ -31,6 +31,8 @@ public class Okno extends JFrame{
     private JLabel stoper1;
     private JLabel stoper2; 
     private JLabel timer;
+    
+    private JComponent naptlo;
     
     int jednostka;
     int ile = 15;
@@ -76,6 +78,8 @@ public class Okno extends JFrame{
         add(pionki);
         
         add(plansza);
+        naptlo = new reversi.koniec.Napis("Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi");
+        add(naptlo);
         
         setVisible(false);
     }

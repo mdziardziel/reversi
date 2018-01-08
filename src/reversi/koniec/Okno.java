@@ -5,6 +5,8 @@
  */
 package reversi.koniec;
 
+import java.awt.FlowLayout;
+import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -19,34 +21,33 @@ import reversi.settings.Ustawienia;
  */
 public class Okno extends JFrame{
     private JComponent przyciski;
-    private JLabel label1;
+    private JPanel animacja;
+    private JPanel napis;
     public Okno(){
         super("Reversi - Koniec gry");
 
         przyciski = new Przyciski(); 
+        animacja = new Animacja();
+        napis = new Napis("");
         //setLayout(new FlowLayout(FlowLayout.CENTER));
         
-        if(Silnik.ktoWygral() == 1 ) label1 = new JLabel("Wygrał Gracz 1!",JLabel.CENTER);
-        else if(Silnik.ktoWygral() == 2 ) label1 = new JLabel("Wygrał Gracz 2!",JLabel.CENTER);
-        else if(Silnik.ktoWygral() == 3 ) label1 = new JLabel("Remis!",JLabel.CENTER);
-        else label1 = new JLabel("Coś poszło nie tak!",JLabel.CENTER);
-//        if(Silnik.ktoWygral() == 1 ) label1 = new JLabel("Wygrał Gracz 1!",JLabel.CENTER);
-//        else if(Silnik.ktoWygral() == 2 ) label1 = new JLabel("Wygrał Gracz 2!",JLabel.CENTER);
-//        else if(Silnik.ktoWygral() == 3 ) label1 = new JLabel("Remis!",JLabel.CENTER);
-//        else label1 = new JLabel("Coś poszło nie tak!",JLabel.CENTER);
+        setLayout(null);
         
+        add(napis);
+        add(animacja);
         add(przyciski);
-        add(label1);
-        //add(label1);
-        //pack();
-        //setLayout(null);
+        
+        
+        //setLayout(new FlowLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);      
         setLocation(Ustawienia.getXLocation(), Ustawienia.getYLocation());
         setSize(Ustawienia.getWidth(),Ustawienia.getHeight()); 
-        //setBackground(reversi.settings.Ustawienia.getKolorOkna());
+        setBackground(reversi.settings.Ustawienia.getKolorOkna());
         setResizable(false);
         
         setVisible(false);
+        repaint();
+        
     }
     
     public void changePanelBounds(){
@@ -58,8 +59,6 @@ public class Okno extends JFrame{
     
     public void zmienNapis(){
         repaint();
-//        label1 = new Napis();
-//        repaint();
     }
 
     

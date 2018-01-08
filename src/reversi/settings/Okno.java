@@ -5,6 +5,7 @@
  */
 package reversi.settings;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -13,12 +14,15 @@ import javax.swing.JPanel;
  * @author michal
  */
 public class Okno extends JFrame{
-    private JPanel przyciski;
+    private JComponent przyciski;
+    private JComponent naptlo;
     public Okno(){
         super("Reversi - Ustwienia");
         
         przyciski = new Przyciski(); 
         add(przyciski);
+        naptlo = new reversi.koniec.Napis("Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi");
+        add(naptlo);
         
         //pack();
         
