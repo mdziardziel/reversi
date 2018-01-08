@@ -81,11 +81,6 @@ public class Okno extends JFrame{
     }
 
     public void changePanelBounds(){
-        //this.remove(plansza);
-        //this.repaint();
-        //plansza = new Plansza();
-        //this.add(plansza);
-        //this.repaint();
         Multi.okno = new Okno(true);
     }
     
@@ -118,12 +113,9 @@ public class Okno extends JFrame{
     }
     
     public void resetPionkow(){
-        //remove(napisy);
-        //napisy = new Napisy();
         wynik1.setText(Silnik.ilePionkow(1)+"");
         wynik2.setText(Silnik.ilePionkow(2)+"");
-        //add(napisy);
-        //pionki = new Pionki();
+        pionki = new Pionki();
         this.repaint();
     }
 }

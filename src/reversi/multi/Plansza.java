@@ -22,7 +22,7 @@ public class Plansza extends JPanel{
     private int poczatekX;
     private int poczatekY;
     private int ile = 15;
-    private Color kolorStolu = new Color(78,53,33);
+    private Color kolorStolu = new Color(102,101,71);
     private Color kolorLicznika = new Color(23,0,0);
     private Color kolorRamek = new Color(6,10,13);
     private Color kolorPlanszy = new Color(214,188,111);
@@ -49,33 +49,36 @@ public class Plansza extends JPanel{
 	Graphics2D g2d = (Graphics2D) g;
         
 	//Rectangle2D stol = new Rectangle2D.Double(poczatekX, poczatekY, ile*jednostka, ile*jednostka);
-        g2d.setColor(kolorStolu);
-        g2d.fillRect(poczatekX, poczatekY, ile*jednostka, ile*jednostka);
+        g.setColor(kolorStolu);
+        g.fill3DRect(poczatekX, poczatekY, ile*jednostka, ile*jednostka,true);
         
         //podkladka
-        g2d.setColor(kolorPodkladki);
-        g2d.fillRect(poczatekX+jednostka*4, poczatekY+jednostka*4, 10*jednostka, 10*jednostka);
+        g.setColor(kolorPodkladki);
+        g.fill3DRect(poczatekX+jednostka*4, poczatekY+jednostka*4, 10*jednostka, 10*jednostka,true);
         
         //plansza
-        g2d.setColor(kolorPlanszy);
-        g2d.fillRect(poczatekX+jednostka*5, poczatekY+jednostka*5, 8*jednostka, 8*jednostka);
+        //g2d.setColor(kolorPlanszy);
+        //g2d.fillRect(poczatekX+jednostka*5, poczatekY+jednostka*5, 8*jednostka, 8*jednostka);
+        
+        g.setColor(kolorPlanszy);
+        g.fill3DRect(poczatekX+jednostka*5, poczatekY+jednostka*5, 8*jednostka, 8*jednostka,true);
         
         //licznik
-        g2d.setColor(kolorLicznika);
-        g2d.fillRect(poczatekX+jednostka*4, poczatekY+jednostka, 10*jednostka, 2*jednostka);
-        g2d.setColor(reversi.settings.Ustawienia.getKolor1());
-        g2d.fillRect(poczatekX+jednostka*4, poczatekY+jednostka, 2*jednostka, 2*jednostka);
-        g2d.setColor(reversi.settings.Ustawienia.getKolor2());
-        g2d.fillRect(poczatekX+jednostka*12, poczatekY+jednostka, 2*jednostka, 2*jednostka);
+        g.setColor(kolorLicznika);
+        g.fill3DRect(poczatekX+jednostka*4, poczatekY+jednostka, 10*jednostka, 2*jednostka,true);
+        g.setColor(reversi.settings.Ustawienia.getKolor1());
+        g.fill3DRect(poczatekX+jednostka*4, poczatekY+jednostka, 2*jednostka, 2*jednostka,true);
+        g.setColor(reversi.settings.Ustawienia.getKolor2());
+        g.fill3DRect(poczatekX+jednostka*12, poczatekY+jednostka, 2*jednostka, 2*jednostka,true);
         
         //lewy panel
-        g2d.setColor(kolorStolu);
-        g2d.fillRect(poczatekX+jednostka, poczatekY+jednostka*4, 2*jednostka, 10*jednostka);
+        g.setColor(kolorStolu);
+        g.fill3DRect(poczatekX+jednostka, poczatekY+jednostka*4, 2*jednostka, 10*jednostka,true);
         
         
         g2d.setColor(kolorRamek);
-        g2d.drawRect(poczatekX+jednostka*4, poczatekY+jednostka, 10*jednostka, 2*jednostka);//licznik
-        g2d.drawRect(poczatekX+jednostka*4, poczatekY+jednostka*4, 10*jednostka, 10*jednostka);//podkladka
+        //g2d.drawRect(poczatekX+jednostka*4, poczatekY+jednostka, 10*jednostka, 2*jednostka);//licznik
+        //g2d.drawRect(poczatekX+jednostka*4, poczatekY+jednostka*4, 10*jednostka, 10*jednostka);//podkladka
         //g2d.drawRect(poczatekX+jednostka, poczatekY+jednostka*4, 2*jednostka, 10*jednostka);//panel
         
         for(int i = poczatekX+jednostka*5; i< poczatekX+jednostka*13; i+=jednostka){

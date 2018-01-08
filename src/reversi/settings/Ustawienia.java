@@ -20,13 +20,45 @@ public class Ustawienia {
     private static int yLocation = 100;
     private static int width = 1000;
     private static int height = 800;
-    private static Color kolor1 = new Color(18, 55,23);
-    private static Color kolor2 = new Color(122, 55,155);
-    private static Color kolorOkna = new Color(137,173,187);
+    private static Color kolor1 = new Color(45, 15, 191);
+    private static Color kolor2 = new Color(255, 205,0);
+    
+    private static Color kolorU1 = new Color(255, 24,0);
+    private static Color kolorU2 = new Color(0, 205,45);
+    private static Color kolorU3 = new Color(45, 15, 191);
+    private static Color kolorU4 = new Color(255, 205,0);
+    private static Color kolorU5 = new Color(0, 180,145);
+    private static Color kolorU6 = new Color(255, 100,0);
+    
+    private static Color kolorOkna = new Color(111,203,159);
     private static Color kolorCyfr = new Color(255,255,255);
     
     public static Okno okno = new Okno();
 
+    public static Color getkolorU1(){
+        return kolorU1;
+    }
+    public static Color getkolorU2(){
+        return kolorU2;
+    }
+    public static Color getkolorU3(){
+        return kolorU3;
+    }
+    public static Color getkolorU4(){
+        return kolorU4;
+    }
+    public static Color getkolorU5(){
+        return kolorU5;
+    }
+    public static Color getkolorU6(){
+        return kolorU6;
+    }
+    public static void setkolor1(Color color){
+        kolor1 = color;
+    }
+    public static void setkolor2(Color color){
+        kolor2 = color;
+    }
     
     public static Color getKolorOkna(){
         return kolorOkna;
@@ -79,14 +111,6 @@ public class Ustawienia {
         Menu.okno.changePanelBounds();
         Ustawienia.okno.setSize(x,y);
         Ustawienia.okno.changePanelBounds();
-//        Multi.okno.setSize(x,y);
-//        Multi.okno.changePanelBounds();
-//        Single.okno.setSize(x,y);
-//        Single.okno.changePanelBounds();
-//        Koniec.okno.setSize(x,y);
-//        Koniec.okno.changePanelBounds();
-        //okno.removeAll();
-        //okno.repaint();
     }
 
 }

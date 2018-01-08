@@ -59,9 +59,13 @@ public class Pionki extends JComponent{
                 else if(tabela[q][z] == 1){
                     g2d.setColor(reversi.settings.Ustawienia.getKolor1());
                     g2d.fillOval(j, i, rPionka, rPionka);
+                    g2d.setColor(Color.BLACK);
+                    g2d.drawOval(j, i, rPionka, rPionka);
                 }else if(tabela[q][z] == 2){
                     g2d.setColor(reversi.settings.Ustawienia.getKolor2());
                     g2d.fillOval(j, i, rPionka, rPionka);
+                    g2d.setColor(Color.BLACK);
+                    g2d.drawOval(j, i, rPionka, rPionka);
                 }else System.out.println("Zła wartość w tabeli"); 
             }
         }

@@ -44,17 +44,11 @@ public class Ruch extends JComponent{
 	//Rectangle2D stol = new Rectangle2D.Double(poczatekX, poczatekY, ile*jednostka, ile*jednostka);
         g2d.setColor(zmian);
         if(reversi.multi.Silnik.getRuch()==1){           
-            g2d.fillRect(0, (int)(jednostka/2), 4*jednostka, (int)(jednostka/2));
-            g2d.fillRect(jednostka*6, (int)(jednostka -jednostka/6), 4*jednostka, (int)(jednostka/6));
-            g2d.setColor(kolorRamek);
-            g2d.drawRect(0, (int)(jednostka/2), 4*jednostka, (int)(jednostka/2));
-            g2d.drawRect(jednostka*6, (int)(jednostka -jednostka/6), 4*jednostka, (int)(jednostka/6));
+            g.fillRect(0, (int)(jednostka/2), 4*jednostka, (int)(jednostka/2));
+            g.fill3DRect(jednostka*6, (int)(jednostka -jednostka/6), 4*jednostka, (int)(jednostka/6),true);
         }else{
-            g2d.fillRect(0, (int)(jednostka - jednostka/6), 4*jednostka, (int)(jednostka/6));
-            g2d.fillRect(jednostka*6, (int)(jednostka/2), 4*jednostka, (int)(jednostka/2));
-            g2d.setColor(kolorRamek);
-            g2d.drawRect(0, (int)(jednostka - jednostka/6), 4*jednostka, (int)(jednostka/6));
-            g2d.drawRect(jednostka*6, (int)(jednostka/2), 4*jednostka, (int)(jednostka/2));
+            g.fill3DRect(0, (int)(jednostka - jednostka/6), 4*jednostka, (int)(jednostka/6),true);
+            g.fill3DRect(jednostka*6, (int)(jednostka/2), 4*jednostka, (int)(jednostka/2),true);
         }
     }
 }

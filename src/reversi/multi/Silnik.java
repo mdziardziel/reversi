@@ -29,6 +29,7 @@ public class Silnik {
         przeciwnik = 2;
         
         Multi.okno.resetPionkow();
+        Single.okno.resetPionkow();
         Timer.reset();
     }
     
@@ -61,7 +62,13 @@ public class Silnik {
         return false;
     }
     
-    
+    private static void spij(int n){
+        try{
+            Thread.sleep(n);
+        }catch(InterruptedException e){
+            System.out.println("Nie udało się zasnąć");
+        }    
+    }
     
     public static void koloruj(int x, int y, int nx, int ny){
         //System.out.println(x + " "+ y + " "+ nx + " "+ ny);
