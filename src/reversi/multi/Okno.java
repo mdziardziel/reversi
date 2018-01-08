@@ -22,7 +22,7 @@ public class Okno extends JFrame{
     private JPanel plansza;
     private JComponent pionki;
     private JComponent mysz;
-    private JPanel ruch;
+    private JComponent ruch;
     private JComponent przyciski;
     private JComponent napisy;
     
@@ -56,11 +56,11 @@ public class Okno extends JFrame{
         napisy = new Napisy();
         
         
-        wynik1 = Napisy.dodajNapis(Silnik.ilePionkow(1)+"", 5,0,jednostka*2, jednostka , jednostka, reversi.settings.Ustawienia.getKolor1());
-        wynik2 = Napisy.dodajNapis(Silnik.ilePionkow(2)+"", jednostka*8,0,jednostka*2, jednostka , jednostka, reversi.settings.Ustawienia.getKolor2());
-        timer = Napisy.dodajNapis("", jednostka*2,0,jednostka*6, jednostka*2-10 , jednostka*2-10, Color.BLACK);
-        stoper1 = Napisy.dodajNapis("00:00", 5,jednostka+5,jednostka*3, jednostka , jednostka/2, reversi.settings.Ustawienia.getKolor1());
-        stoper2 = Napisy.dodajNapis("00:00", jednostka*8,jednostka+5,jednostka*3, jednostka , jednostka/2, reversi.settings.Ustawienia.getKolor2());
+        wynik1 = Napisy.dodajNapis(Silnik.ilePionkow(1)+"", 5,0,jednostka*2, jednostka , jednostka, reversi.settings.Ustawienia.getKolorCyfr());
+        wynik2 = Napisy.dodajNapis(Silnik.ilePionkow(2)+"", jednostka*8,0,jednostka*2, jednostka , jednostka, reversi.settings.Ustawienia.getKolorCyfr());
+        timer = Napisy.dodajNapis("", jednostka*2,0,jednostka*6, jednostka*2-10 , jednostka*2-10, reversi.settings.Ustawienia.getKolorCyfr());
+        stoper1 = Napisy.dodajNapis("00:00", 5,jednostka+5,jednostka*3, jednostka , jednostka/2, reversi.settings.Ustawienia.getKolorCyfr());
+        stoper2 = Napisy.dodajNapis("00:00", jednostka*8,jednostka+5,jednostka*3, jednostka , jednostka/2, reversi.settings.Ustawienia.getKolorCyfr());
         
         napisy.add(stoper1);
         napisy.add(stoper2);
@@ -83,9 +83,10 @@ public class Okno extends JFrame{
     public void changePanelBounds(){
         //this.remove(plansza);
         //this.repaint();
-        plansza = new Plansza();
+        //plansza = new Plansza();
         //this.add(plansza);
-        this.repaint();
+        //this.repaint();
+        Multi.okno = new Okno(true);
     }
     
     public void changeKolorRuch(int x){

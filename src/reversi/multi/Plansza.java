@@ -22,12 +22,12 @@ public class Plansza extends JPanel{
     private int poczatekX;
     private int poczatekY;
     private int ile = 15;
-    private Color kolorStolu = new Color(123, 55,223);
-    private Color kolorLicznika = new Color(123, 155,23);
-    private Color kolorRamek = new Color(10, 55,23);
-    private Color kolorPlanszy = new Color(123, 150,123);
+    private Color kolorStolu = new Color(78,53,33);
+    private Color kolorLicznika = new Color(23,0,0);
+    private Color kolorRamek = new Color(6,10,13);
+    private Color kolorPlanszy = new Color(214,188,111);
     private Color kolorPodkladki = kolorPlanszy;
-    private Color kolorCyfr = new Color(60, 55,60);
+    
     
     
     Plansza(){
@@ -61,18 +61,22 @@ public class Plansza extends JPanel{
         g2d.fillRect(poczatekX+jednostka*5, poczatekY+jednostka*5, 8*jednostka, 8*jednostka);
         
         //licznik
-        g2d.setColor(kolorPodkladki);
+        g2d.setColor(kolorLicznika);
         g2d.fillRect(poczatekX+jednostka*4, poczatekY+jednostka, 10*jednostka, 2*jednostka);
+        g2d.setColor(reversi.settings.Ustawienia.getKolor1());
+        g2d.fillRect(poczatekX+jednostka*4, poczatekY+jednostka, 2*jednostka, 2*jednostka);
+        g2d.setColor(reversi.settings.Ustawienia.getKolor2());
+        g2d.fillRect(poczatekX+jednostka*12, poczatekY+jednostka, 2*jednostka, 2*jednostka);
         
         //lewy panel
-        g2d.setColor(kolorPodkladki);
+        g2d.setColor(kolorStolu);
         g2d.fillRect(poczatekX+jednostka, poczatekY+jednostka*4, 2*jednostka, 10*jednostka);
         
         
         g2d.setColor(kolorRamek);
         g2d.drawRect(poczatekX+jednostka*4, poczatekY+jednostka, 10*jednostka, 2*jednostka);//licznik
         g2d.drawRect(poczatekX+jednostka*4, poczatekY+jednostka*4, 10*jednostka, 10*jednostka);//podkladka
-        g2d.drawRect(poczatekX+jednostka, poczatekY+jednostka*4, 2*jednostka, 10*jednostka);//panel
+        //g2d.drawRect(poczatekX+jednostka, poczatekY+jednostka*4, 2*jednostka, 10*jednostka);//panel
         
         for(int i = poczatekX+jednostka*5; i< poczatekX+jednostka*13; i+=jednostka){
             for(int j = poczatekY+jednostka*5; j< poczatekY+jednostka*13; j+=jednostka){

@@ -6,6 +6,8 @@
 package reversi.multi;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import reversi.settings.Ustawienia;
@@ -14,11 +16,13 @@ import reversi.settings.Ustawienia;
  *
  * @author michal
  */
-public class Ruch extends JPanel{
+public class Ruch extends JComponent{
     private int ile = 15;
     private int jednostka;
     private int poczatekX;
     private int poczatekY;
+    private Color kolorRamek = new Color(6,10,13);
+    private Color zmian = new Color(208,68,71);
     Ruch(){
         if(Ustawienia.getWidth() < Ustawienia.getHeight()){
             jednostka = Ustawienia.getWidth()/(ile);
@@ -27,8 +31,30 @@ public class Ruch extends JPanel{
         }
         poczatekX = (Ustawienia.getWidth()-jednostka*(ile))/2;
         poczatekY = (Ustawienia.getHeight()-jednostka*(ile))/2;
-        setLocation(poczatekX+jednostka, poczatekY+jednostka);
-        setSize(jednostka*2,jednostka*2);
-        setBackground(reversi.settings.Ustawienia.getKolor1());    
+        setLocation(poczatekX+jednostka*4, poczatekY);
+        setSize(jednostka*10,jednostka);
+           
+    }
+    
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+	Graphics2D g2d = (Graphics2D) g;
+        
+	//Rectangle2D stol = new Rectangle2D.Double(poczatekX, poczatekY, ile*jednostka, ile*jednostka);
+        g2d.setColor(zmian);
+        if(reversi.multi.Silnik.getRuch()==1){           
+            g2d.fillRect(0, (int)(jednostka/2), 4*jednostka, (int)(jednostka/2));
+            g2d.fillRect(jednostka*6, (int)(jednostka -jednostka/6), 4*jednostka, (int)(jednostka/6));
+            g2d.setColor(kolorRamek);
+            g2d.drawRect(0, (int)(jednostka/2), 4*jednostka, (int)(jednostka/2));
+            g2d.drawRect(jednostka*6, (int)(jednostka -jednostka/6), 4*jednostka, (int)(jednostka/6));
+        }else{
+            g2d.fillRect(0, (int)(jednostka - jednostka/6), 4*jednostka, (int)(jednostka/6));
+            g2d.fillRect(jednostka*6, (int)(jednostka/2), 4*jednostka, (int)(jednostka/2));
+            g2d.setColor(kolorRamek);
+            g2d.drawRect(0, (int)(jednostka - jednostka/6), 4*jednostka, (int)(jednostka/6));
+            g2d.drawRect(jednostka*6, (int)(jednostka/2), 4*jednostka, (int)(jednostka/2));
+        }
     }
 }

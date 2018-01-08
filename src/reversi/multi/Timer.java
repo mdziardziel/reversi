@@ -33,6 +33,10 @@ public class Timer implements Runnable{
     
     public static void reset(){
         startTime = System.currentTimeMillis();
+        stoper1 = false;
+        stoper2 = false;
+        timeS1 = 0;
+        timeS2 = 0;
     }
     
     public static void setStoper(long s){

@@ -5,8 +5,10 @@
  */
 package reversi.settings;
 import java.awt.Color;
+import reversi.koniec.Koniec;
 import reversi.menu.Menu;
 import reversi.multi.Multi;
+import reversi.multi.Single;
 
 /**
  *
@@ -20,13 +22,17 @@ public class Ustawienia {
     private static int height = 800;
     private static Color kolor1 = new Color(18, 55,23);
     private static Color kolor2 = new Color(122, 55,155);
-    private static Color kolorOkna = new Color(0, 255,155);
+    private static Color kolorOkna = new Color(137,173,187);
+    private static Color kolorCyfr = new Color(255,255,255);
     
     public static Okno okno = new Okno();
 
     
     public static Color getKolorOkna(){
         return kolorOkna;
+    }
+    public static Color getKolorCyfr(){
+        return kolorCyfr;
     }
     public static Color getKolor1(){
         return kolor1;
@@ -65,12 +71,20 @@ public class Ustawienia {
     public static void zmienRozmiarOkien(int x, int y){
         setWidth(x);
         setHeight(y);
+        
+        Multi.okno = new reversi.multi.Okno(true);
+        Single.okno = new reversi.multi.Okno(false);
+        
         Menu.okno.setSize(x, y);
         Menu.okno.changePanelBounds();
         Ustawienia.okno.setSize(x,y);
         Ustawienia.okno.changePanelBounds();
-        Multi.okno.setSize(x,y);
-        Multi.okno.changePanelBounds();
+//        Multi.okno.setSize(x,y);
+//        Multi.okno.changePanelBounds();
+//        Single.okno.setSize(x,y);
+//        Single.okno.changePanelBounds();
+//        Koniec.okno.setSize(x,y);
+//        Koniec.okno.changePanelBounds();
         //okno.removeAll();
         //okno.repaint();
     }

@@ -29,6 +29,7 @@ public class Silnik {
         przeciwnik = 2;
         
         Multi.okno.resetPionkow();
+        Timer.reset();
     }
     
     
