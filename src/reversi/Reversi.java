@@ -24,6 +24,9 @@ public class Reversi {
     public static void main(String[] args) {
         reversi.multi.Silnik.reset();
         
+        Runnable timer = new reversi.multi.Timer();
+        Thread watek1 = new Thread(timer);
+        watek1.start();
         Menu.okno.setVisible(true);
         Ustawienia.okno.setVisible(false);
         Multi.okno.setVisible(false);

@@ -28,6 +28,9 @@ public class Okno extends JFrame{
     
     private JLabel wynik1;
     private JLabel wynik2;
+    private JLabel stoper1;
+    private JLabel stoper2; 
+    private JLabel timer;
     
     int jednostka;
     int ile = 15;
@@ -54,8 +57,14 @@ public class Okno extends JFrame{
         
         
         wynik1 = Napisy.dodajNapis(Silnik.ilePionkow(1)+"", 5,0,jednostka*2, jednostka , jednostka, reversi.settings.Ustawienia.getKolor1());
-        wynik2 = Napisy.dodajNapis(Silnik.ilePionkow(2)+"", jednostka*8 + 5,0,jednostka*2, jednostka , jednostka, reversi.settings.Ustawienia.getKolor2());
+        wynik2 = Napisy.dodajNapis(Silnik.ilePionkow(2)+"", jednostka*8,0,jednostka*2, jednostka , jednostka, reversi.settings.Ustawienia.getKolor2());
+        timer = Napisy.dodajNapis("", jednostka*2,0,jednostka*6, jednostka*2-10 , jednostka*2-10, Color.BLACK);
+        stoper1 = Napisy.dodajNapis("00:00", 5,jednostka+5,jednostka*3, jednostka , jednostka/2, reversi.settings.Ustawienia.getKolor1());
+        stoper2 = Napisy.dodajNapis("00:00", jednostka*8,jednostka+5,jednostka*3, jednostka , jednostka/2, reversi.settings.Ustawienia.getKolor2());
         
+        napisy.add(stoper1);
+        napisy.add(stoper2);
+        napisy.add(timer);
         napisy.add(wynik1);
         napisy.add(wynik2);
         
@@ -84,6 +93,27 @@ public class Okno extends JFrame{
             ruch.setBackground(reversi.settings.Ustawienia.getKolor1());
         else
             ruch.setBackground(reversi.settings.Ustawienia.getKolor2());
+    }
+    
+    public void setTimer(int m, int s){
+        String mm=""+m, ss=""+s;
+        if(m<10) mm = "0"+mm;
+        if(s<10) ss = "0"+ss;
+        timer.setText(mm+":"+ss);
+    }
+    
+    public void setStoper1(int m, int s){
+        String mm=""+m, ss=""+s;
+        if(m<10) mm = "0"+mm;
+        if(s<10) ss = "0"+ss;
+        stoper1.setText(mm+":"+ss);
+    }
+        
+    public void setStoper2(int m, int s){
+        String mm=""+m, ss=""+s;
+        if(m<10) mm = "0"+mm;
+        if(s<10) ss = "0"+ss;
+        stoper2.setText(mm+":"+ss);
     }
     
     public void resetPionkow(){

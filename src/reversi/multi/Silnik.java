@@ -63,7 +63,7 @@ public class Silnik {
     
     
     public static void koloruj(int x, int y, int nx, int ny){
-        System.out.println(x + " "+ y + " "+ nx + " "+ ny);
+        //System.out.println(x + " "+ y + " "+ nx + " "+ ny);
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 8; j++){
                 if((x==nx || y==ny) && zawiera(x,nx,j) && zawiera(y,ny,i)) {
@@ -86,6 +86,7 @@ public class Silnik {
         reversi.multi.Multi.okno.resetPionkow();
         reversi.multi.Single.okno.changeKolorRuch(ruch);
         reversi.multi.Single.okno.resetPionkow();
+        Timer.changeStoper();
     }
     
     

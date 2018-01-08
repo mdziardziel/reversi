@@ -6,10 +6,12 @@
 package reversi.multi;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JTextField;
 import reversi.settings.Ustawienia;
 
 /**
@@ -25,6 +27,7 @@ public class Przyciski extends JComponent implements ActionListener{
     private JButton button2 = new JButton("Poddaj ruch");
     private JButton button3 = new JButton("Od nowa");
     private JButton button4 = new JButton("Minutnik");
+    private JTextField timeField = new JTextField();
     private boolean multi;
     
     public Przyciski(boolean m) {
@@ -40,8 +43,12 @@ public class Przyciski extends JComponent implements ActionListener{
         setSize(jednostka*2,jednostka*10); 
         setLayout(null);
         //setBackground(Color.BLUE);
+        
+        timeField.setBounds(0, jednostka*8, jednostka*2, jednostka/2);
+        add(timeField);
         addButton(button1,0,jednostka,jednostka*2,jednostka);
         addButton(button2,0,jednostka*3,jednostka*2,jednostka);
+        button2.setFont(new Font("", Font.BOLD, (int)jednostka/5));
         addButton(button3,0,jednostka*5,jednostka*2,jednostka);
         addButton(button4,0,jednostka*7,jednostka*2,jednostka);
             
@@ -77,7 +84,16 @@ public class Przyciski extends JComponent implements ActionListener{
             Multi.okno.changeKolorRuch(Silnik.getRuch());              
         }
         if(source == button4){
-
+            String text = timeField.getText();
+            int sec;
+            try{
+                sec = Integer.parseInt(text);
+            }catch(NumberFormatException ex){
+                System.out.println("Źle wpisana wartość");
+                sec = 60*5;
+            }
+            if(sec<30)sec=sec*60;
+            Timer.setStoper(sec);
         }
         
     }
