@@ -7,9 +7,6 @@ package reversi.multi;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D;
-//import javafx.scene.paint.Color;
-import javax.swing.JPanel;
 import reversi.settings.Ustawienia;
 import java.awt.Color;
 import javax.swing.JComponent;
@@ -19,19 +16,19 @@ import javax.swing.JComponent;
  * @author michal
  */
 public class Plansza extends JComponent{
-    private int jednostka;
-    private int poczatekX;
-    private int poczatekY;
-    private int ile = 15;
-    private Color kolorStolu = Ustawienia.getKolorOkna();//new Color(102,101,71);
-    private Color kolorLicznika = new Color(23,0,0);
-    private Color kolorRamek = new Color(6,10,13);
-    private Color kolorPlanszy = new Color(214,188,111);
-    private Color kolorPodkladki = kolorPlanszy;
+    protected int jednostka;
+    protected int poczatekX;
+    protected int poczatekY;
+    protected int ile = 15;
+    protected Color kolorStolu = Ustawienia.getKolorOkna();//new Color(102,101,71);
+    protected Color kolorLicznika = new Color(23,0,0);
+    protected Color kolorRamek = new Color(6,10,13);
+    protected Color kolorPlanszy = new Color(214,188,111);
+    protected Color kolorPodkladki = kolorPlanszy;
     
     
     
-    Plansza(){
+    public Plansza(){
         if(Ustawienia.getWidth() < Ustawienia.getHeight()){
             jednostka = Ustawienia.getWidth()/(ile);
         }else{

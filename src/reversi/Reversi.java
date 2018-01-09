@@ -10,7 +10,6 @@ import reversi.koniec.Koniec;
 import reversi.menu.Menu;
 import reversi.settings.Ustawienia;
 import reversi.multi.Multi;
-import reversi.multi.Single;
 
 /**
  *
@@ -21,17 +20,14 @@ public class Reversi {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        reversi.multi.Silnik.reset();
-        
+    public static void main(String[] args) {       
         Runnable timer = new reversi.multi.Timer();
         Thread watek1 = new Thread(timer);
         watek1.start();
         Menu.okno.setVisible(true);
         Ustawienia.okno.setVisible(false);
         Multi.okno.setVisible(false);
-        Single.okno.setVisible(false);
-          //reversi.koniec.Koniec.okno.setVisible(true);
+
     }
     
 }

@@ -10,24 +10,23 @@ import java.awt.Graphics2D;
 import javax.swing.JComponent;
 import reversi.settings.Ustawienia;
 
-import javax.swing.JPanel;
 
 /**
  *
  * @author michal
  */
 public class Pionki extends JComponent{
-    private int jednostka;
-    private int poczatekX;
-    private int poczatekY;
-    private static int ile = 15;
-    private int rPionka;
+    protected int jednostka;
+    protected int poczatekX;
+    protected int poczatekY;
+    protected static int ile = 15;
+    protected int rPionka;
     
-    private static int jeds;
-    private static int poXs;
-    private static int poYs;
+    protected static int jeds;
+    protected static int poXs;
+    protected static int poYs;
     
-    Pionki(){
+    public Pionki(){
         if(Ustawienia.getWidth() < Ustawienia.getHeight()){
             jednostka = Ustawienia.getWidth()/(ile);
         }else{
@@ -48,7 +47,7 @@ public class Pionki extends JComponent{
     protected void paintComponent(Graphics g) {
 	super.paintComponent(g);
 	Graphics2D g2d = (Graphics2D) g;
-        int tabela[][] = reversi.multi.Silnik.getTabela();
+        int tabela[][] = Silnik.getTabela();
         int q = -1;
         for(int i = poczatekY+jednostka*5+(jednostka-rPionka)/2; i< poczatekY+jednostka*13; i+=jednostka){
             q++;

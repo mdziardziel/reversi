@@ -5,13 +5,10 @@
  */
 package reversi.koniec;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
-import reversi.multi.Multi;
 import reversi.settings.Ustawienia;
 
 /**

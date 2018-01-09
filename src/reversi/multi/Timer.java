@@ -5,7 +5,6 @@
  */
 package reversi.multi;
 
-import static java.lang.Thread.sleep;
 
 
 /**
@@ -18,6 +17,7 @@ public class Timer implements Runnable{
     public static long sec;
     public static long mins;
     public static long minsec;
+    public static boolean stop = false;
     
     public static long timeS1;
     public static long timeS2;
@@ -26,6 +26,8 @@ public class Timer implements Runnable{
 
     public static boolean stoper1 = false;
     public static boolean stoper2 = false;
+    
+
     
     public long getTime(){
         return time;
@@ -44,8 +46,13 @@ public class Timer implements Runnable{
     }
     
     public static void setStoper(long s){
-        stoper1 = true;
-        stoper2 = false;
+        if(Silnik.getRuch()==1){
+            stoper1 = true;
+            stoper2 = false;
+        }else{
+            stoper1 = false;
+            stoper2 = true;
+        }      
         timeS1 = s*1000;
         timeS2 = s*1000;
         last = System.currentTimeMillis();
@@ -72,25 +79,22 @@ public class Timer implements Runnable{
         if(stoper2) {
             timeS2 = timeS2 - (System.currentTimeMillis()-last);
         }
-        
-                
-        last = System.currentTimeMillis();
-        if((stoper1 || stoper2) && (timeS1 >0 && timeS2 > 0)){
-            Multi.okno.setStoper1((int)timeS1/1000/60, (int)timeS1/1000%60);
-            Multi.okno.setStoper2((int)timeS2/1000/60, (int)timeS2/1000%60);
-            Single.okno.setStoper1((int)timeS1/1000/60, (int)timeS1/1000%60);
-            Single.okno.setStoper2((int)timeS2/1000/60, (int)timeS2/1000%60);
+       
+        if(Silnik.ilePionkow(0)!=0 && Silnik.ilePionkow(1)!=0 && Silnik.ilePionkow(2)!=0){
+            Multi.okno.setTimer((int)mins, (int)minsec);
+            if((stoper1 || stoper2) && (timeS1 >0 && timeS2 > 0)){
+                Multi.okno.setStoper1((int)timeS1/1000/60, (int)timeS1/1000%60);
+                Multi.okno.setStoper2((int)timeS2/1000/60, (int)timeS2/1000%60);
+            }
         }
-        
-        Multi.okno.setTimer((int)mins, (int)minsec);
-        Single.okno.setTimer((int)mins, (int)minsec);
-        
+         last = System.currentTimeMillis();
         //System.out.println(minsS+" "+minsecS);
         try{
             Thread.sleep(10);
         }catch(InterruptedException e){
             System.out.println("Nie udało się zasnąć");
         }
+        reversi.multi.Multi.okno.resetPionkow();
         }
     }
     

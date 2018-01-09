@@ -7,12 +7,8 @@ package reversi.koniec;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import static reversi.multi.Timer.startTime;
 import static reversi.multi.Timer.time;
-import reversi.settings.Ustawienia;
 
 /**
  *

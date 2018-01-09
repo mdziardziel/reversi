@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import reversi.Reversi;
 import reversi.multi.Multi;
-import reversi.multi.Silnik;
 import reversi.multi.Timer;
 import reversi.settings.Ustawienia;
 
@@ -28,9 +27,9 @@ public class Napis extends JPanel{
     public Napis(String str){
         if(str!="")text = str;
         else
-        if(Silnik.ktoWygral() == 1 ) text = "Wygrał Gracz 1! Wygrał Gracz 1!Wygrał Gracz 1! Wygrał Gracz 1!";
-        else if(Silnik.ktoWygral() == 2 ) text = "Wygrał Gracz 2! Wygrał Gracz 2!Wygrał Gracz 2! Wygrał Gracz 2!";
-        else if(Silnik.ktoWygral() == 3 ) text = "Remis!Remis!Remis!Remis!Remis!Remis!Remis!Remis!Remis!Remis!Remis!Remis!";
+        if(reversi.multi.Silnik.ktoWygral() == 1 ) text = "Wygrał Gracz 1! Wygrał Gracz 1!Wygrał Gracz 1! Wygrał Gracz 1!";
+        else if(reversi.multi.Silnik.ktoWygral() == 2 ) text = "Wygrał Gracz 2! Wygrał Gracz 2!Wygrał Gracz 2! Wygrał Gracz 2!";
+        else if(reversi.multi.Silnik.ktoWygral() == 3 ) text = "Remis!Remis!Remis!Remis!Remis!Remis!Remis!Remis!Remis!Remis!Remis!Remis!";
         else text = "Coś poszło nie tak!";
         setLayout(null);  
         for(int i = 0; i <= 10; i++){

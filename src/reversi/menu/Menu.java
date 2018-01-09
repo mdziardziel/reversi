@@ -9,5 +9,5 @@ package reversi.menu;
  * @author michal
  */
 public class Menu {
-    public static final Okno okno = new Okno();
+    public static Okno okno = new Okno();
 }

@@ -4,13 +4,10 @@
  * and open the template in the editor.
  */
 package reversi.menu;
-import java.awt.FlowLayout;
 import javax.swing.JComponent;
 import reversi.settings.Ustawienia;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 /**
  *
@@ -43,10 +40,11 @@ public class Okno extends JFrame{
     }
     
     public void changePanelBounds(){
-        this.remove(przyciski);
-        this.repaint();
+        //this.remove(przyciski);
         przyciski = new Przyciski();
-        this.add(przyciski);
+        this.repaint();
+        //przyciski = new Przyciski();
+        //this.add(przyciski);
     }
 
     

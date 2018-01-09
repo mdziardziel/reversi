@@ -10,7 +10,6 @@ package reversi.settings;
  * @author michal
  */
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -18,7 +17,6 @@ import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import reversi.menu.Menu;
@@ -133,7 +131,9 @@ import reversi.menu.Menu;
             int x = Integer.parseInt(field1.getText());
             int y = Integer.parseInt(field2.getText());
             if(x!= Ustawienia.getWidth() || y != Ustawienia.getHeight())
+                Ustawienia.okno.setVisible(false);
                 Ustawienia.zmienRozmiarOkien(x, y);
+                Ustawienia.okno.setVisible(true);
         }
         if(source == button2){
             

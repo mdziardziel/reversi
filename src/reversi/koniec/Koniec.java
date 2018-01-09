@@ -10,6 +10,6 @@ package reversi.koniec;
  * @author michal
  */
 public class Koniec {
-    public static final Okno okno = new Okno();
+    public static Okno okno = new Okno();
     
 }

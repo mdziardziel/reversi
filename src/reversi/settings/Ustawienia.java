@@ -5,16 +5,14 @@
  */
 package reversi.settings;
 import java.awt.Color;
-import reversi.koniec.Koniec;
 import reversi.menu.Menu;
 import reversi.multi.Multi;
-import reversi.multi.Single;
 
 /**
  *
  * @author michal
  */
-public class Ustawienia { 
+public class Ustawienia{ 
     
     private static int xLocation = 200;
     private static int yLocation = 100;
@@ -37,6 +35,14 @@ public class Ustawienia {
     
     public static Okno okno = new Okno();
 
+    private static boolean multi;
+    
+    public static boolean getMulti(){
+        return multi;
+    }
+    public static void setMulti(boolean x){
+        multi = x;
+    }
     public static Color getButtonKolor(){
         return buttonKolor;
     }
@@ -108,15 +114,12 @@ public class Ustawienia {
     
     public static void zmienRozmiarOkien(int x, int y){
         setWidth(x);
-        setHeight(y);
-        
-        Multi.okno = new reversi.multi.Okno(true);
-        Single.okno = new reversi.multi.Okno(false);
-        
-        Menu.okno.setSize(x, y);
-        Menu.okno.changePanelBounds();
-        Ustawienia.okno.setSize(x,y);
-        Ustawienia.okno.changePanelBounds();
+        setHeight(y);      
+        Multi.okno = new reversi.multi.Okno();
+        Menu.okno = new reversi.menu.Okno();
+        okno = new Okno();
+
     }
+
 
 }

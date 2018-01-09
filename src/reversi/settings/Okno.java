@@ -7,7 +7,6 @@ package reversi.settings;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 /**
  *

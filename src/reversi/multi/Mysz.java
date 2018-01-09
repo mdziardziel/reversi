@@ -5,11 +5,10 @@
  */
 package reversi.multi;
 
-import java.awt.Color;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import reversi.settings.Ustawienia;
 
 /**
@@ -17,12 +16,10 @@ import reversi.settings.Ustawienia;
  * @author michal
  */
 public class Mysz extends JComponent implements MouseListener{
-    private int jednostka;
-    private int ile = 15;
-    private int poczatekX, poczatekY;
-    boolean multi;
-    Mysz(boolean m){
-        multi = m;
+    protected int jednostka;
+    protected int ile = 15;
+    protected int poczatekX, poczatekY;
+    public Mysz(){
         if(Ustawienia.getWidth() < Ustawienia.getHeight()){
             jednostka = Ustawienia.getWidth()/(ile);
         }else{
@@ -39,19 +36,15 @@ public class Mysz extends JComponent implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        //System.out.println(e.getX() + " " + e.getY());
         int x = (int)Math.floor(e.getX()/jednostka);
         int y = (int)Math.floor(e.getY()/jednostka);
         if((x>=0 && x <8)&& (y>=0 && y < 8)){
-            if(reversi.multi.Silnik.sprawdzRuch(x, y, true)) {
-                reversi.multi.Silnik.zmiana();
-                Silnik.koniecGry();
-                if(!multi) {
-                    Silnik.ruchKomputera();
-                    reversi.multi.Silnik.zmiana();
-                    Silnik.koniecGry();
-                }            
-            }     
+//            if(Silnik.sprawdzRuch(x, y, true)) {
+//                   
+//            }     
+            Runnable ss = new Silnik(x,y,true);
+            Thread watek = new Thread(ss);
+            watek.start();
         }
     }
 

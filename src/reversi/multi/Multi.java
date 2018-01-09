@@ -10,5 +10,5 @@ package reversi.multi;
  * @author michal
  */
 public class Multi {
-    public static Okno okno = new Okno(true);
+    public static Okno okno = new Okno();
 }

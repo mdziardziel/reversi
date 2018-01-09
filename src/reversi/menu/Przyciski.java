@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package reversi.menu;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import reversi.settings.Ustawienia;
@@ -14,8 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
-import reversi.multi.Single;
 
 /**
  *
@@ -69,14 +66,16 @@ public class Przyciski extends JComponent implements ActionListener{
         if(source == button1){
             reversi.multi.Silnik.reset();
             Menu.okno.setVisible(false);
-            Single.okno.setLocation(Menu.okno.getLocation());
-            Single.okno.setVisible(true);
+            Multi.okno.setLocation(Menu.okno.getLocation());
+            Multi.okno.setVisible(true);
+            Ustawienia.setMulti(false);
         }
         if(source == button2){
             reversi.multi.Silnik.reset();
             Menu.okno.setVisible(false);
             Multi.okno.setLocation(Menu.okno.getLocation());
             Multi.okno.setVisible(true);
+            Ustawienia.setMulti(true);
         }
         if(source == button3){
             Menu.okno.setVisible(false);

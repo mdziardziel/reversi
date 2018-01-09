@@ -5,15 +5,23 @@
  */
 package reversi.multi;
 
+import reversi.settings.Ustawienia;
+
 /**
  *
  * @author michal
  */
-public class Silnik {
-    private static int[][] tabela = new int[8][8];
-    private static int ruch = 1;
-    private static int przeciwnik = 2;
-    
+public class Silnik implements Runnable{
+    protected static int[][] tabela = new int[8][8];
+    protected static int ruch = 1;
+    protected static int przeciwnik = 2;
+    int xx,yy;
+    boolean bb;
+    Silnik(int xx, int yy, boolean bb){
+        this.xx = xx;
+        this.yy = yy;
+        this.bb = bb;
+    }
     public static void reset(){
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 8; j++){
@@ -29,7 +37,6 @@ public class Silnik {
         przeciwnik = 2;
         
         Multi.okno.resetPionkow();
-        Single.okno.resetPionkow();
         Timer.reset();
     }
     
@@ -46,13 +53,13 @@ public class Silnik {
     }
     
     
-    private static boolean zawiera(int p1, int p2, int pp){
+    protected static boolean zawiera(int p1, int p2, int pp){
         if(p1<=pp && pp<=p2)return true;
         if(p1>=pp && pp>=p2)return true;
         return false;
     }
     
-    private static boolean zawieraSkos(int x1, int x2, int x3, int y1, int y2, int y3){
+    protected static boolean zawieraSkos(int x1, int x2, int x3, int y1, int y2, int y3){
         while(x1!=x2 && y1!=y2){
             if(x1 == x3 && y1 == y3)return true;
             if(x1==x2 && y1==y2)return false;
@@ -62,7 +69,7 @@ public class Silnik {
         return false;
     }
     
-    private static void spij(int n){
+    protected static void spij(int n){
         try{
             Thread.sleep(n);
         }catch(InterruptedException e){
@@ -75,10 +82,13 @@ public class Silnik {
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 8; j++){
                 if((x==nx || y==ny) && zawiera(x,nx,j) && zawiera(y,ny,i)) {
+                    spij(300);
                     tabela[i][j] = ruch;
-                    //System.out.println(j+ " " + i);
+                    //reversi.multi.Multi.okno.resetPionkow();
                 }else if((x!=nx && y!=ny) && zawieraSkos(x,nx,j,y,ny,i)){
+                    spij(300);
                     tabela[i][j] = ruch;
+                    //reversi.multi.Multi.okno.resetPionkow();
                 }
             }
         }
@@ -87,21 +97,21 @@ public class Silnik {
     
     
     public static void zmiana(){
+        Silnik.koniecGry();
         int pom = ruch;
         ruch = przeciwnik;
         przeciwnik = pom;
-        reversi.multi.Multi.okno.changeKolorRuch(ruch);
+        //reversi.multi.Multi.okno.changeKolorRuch(ruch);
         reversi.multi.Multi.okno.resetPionkow();
-        reversi.multi.Single.okno.changeKolorRuch(ruch);
-        reversi.multi.Single.okno.resetPionkow();
         Timer.changeStoper();
+        if(Ustawienia.getMulti()==false && ruch == 2) ruchKomputera();
     }
     
     
     public static void koniecGry(){
-        if(reversi.multi.Silnik.ilePionkow(0)==0 || 
-                reversi.multi.Silnik.ilePionkow(1)==0 || 
-                reversi.multi.Silnik.ilePionkow(2)==0){
+        if(ilePionkow(0)==0 || 
+            ilePionkow(1)==0 || 
+            ilePionkow(2)==0){
             reversi.koniec.Koniec.okno.setLocation(Multi.okno.getLocation());
             reversi.koniec.Koniec.okno.zmienNapis();
             reversi.koniec.Koniec.okno.setVisible(true);
@@ -215,6 +225,7 @@ public class Silnik {
             i++;j++;
         }
         
+        if(ret)zmiana(); 
         return ret;
     }
     
@@ -228,18 +239,6 @@ public class Silnik {
             }
         }
         return bol;
-    }
-    
-    public static void ruchKomputera(){
-        boolean z = false;
-        for(int i = 0; i < 8; i++){
-            for(int j = 0; j < 8; j++){
-                z = sprawdzRuch(i,j,true);
-                if(z==true) break;
-            }
-            if(z == true)break;
-        }
-        if(!z) zmiana();
     }
     
     
@@ -273,4 +272,23 @@ public class Silnik {
         return copyTabela();
     }
     
+    public static void ruchKomputera(){
+        spij(700);
+        boolean z = false;
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; j < 8; j++){
+                z = sprawdzRuch(i,j,true);
+                if(z==true) break;
+            }
+            if(z == true)break;
+        }
+        //koniecGry();
+        //zmiana();
+    }
+
+    @Override
+    public void run() {
+        sprawdzRuch(xx, yy, bb);
+    }
+
 }

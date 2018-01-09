@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import reversi.settings.Ustawienia;
 
 /**
@@ -17,13 +16,13 @@ import reversi.settings.Ustawienia;
  * @author michal
  */
 public class Ruch extends JComponent{
-    private int ile = 15;
-    private int jednostka;
-    private int poczatekX;
-    private int poczatekY;
-    private Color kolorRamek = new Color(6,10,13);
-    private Color zmian = new Color(208,68,71);
-    Ruch(){
+    protected int ile = 15;
+    protected int jednostka;
+    protected int poczatekX;
+    protected int poczatekY;
+    protected Color kolorRamek = new Color(6,10,13);
+    protected Color zmian = new Color(208,68,71);
+    public Ruch(){
         if(Ustawienia.getWidth() < Ustawienia.getHeight()){
             jednostka = Ustawienia.getWidth()/(ile);
         }else{
@@ -43,7 +42,7 @@ public class Ruch extends JComponent{
         
 	//Rectangle2D stol = new Rectangle2D.Double(poczatekX, poczatekY, ile*jednostka, ile*jednostka);
         g2d.setColor(zmian);
-        if(reversi.multi.Silnik.getRuch()==1){           
+        if(Silnik.getRuch()==1){           
             g.fillRect(0, (int)(jednostka/2), 4*jednostka, (int)(jednostka/2));
             g.fill3DRect(jednostka*6, (int)(jednostka -jednostka/6), 4*jednostka, (int)(jednostka/6),true);
         }else{

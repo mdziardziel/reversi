@@ -5,14 +5,9 @@
  */
 package reversi.koniec;
 
-import java.awt.FlowLayout;
-import java.awt.Font;
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import reversi.multi.Silnik;
 import reversi.settings.Ustawienia;
 
 /**
