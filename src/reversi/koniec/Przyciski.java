@@ -47,19 +47,8 @@ public class Przyciski extends JComponent implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         Object source = e.getSource();
-        
-//        if(source == button1){
-//            Koniec.okno.setVisible(false);
-//            reversi.multi.Silnik.reset();
-//            reversi.multi.Multi.okno.setLocation(Koniec.okno.getLocation());
-//            reversi.multi.Multi.okno.setVisible(true);
-//        }
-//        if(source == button2){
-//            Koniec.okno.setVisible(false);
-//            reversi.settings.Ustawienia.okno.setLocation(Koniec.okno.getLocation());
-//            reversi.settings.Ustawienia.okno.setVisible(true);
-//        }
         if(source == button3){
+            Animacja.setAnim(false);
             Koniec.okno.setVisible(false);
         }
         

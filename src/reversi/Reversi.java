@@ -27,6 +27,7 @@ public class Reversi {
         Menu.okno.setVisible(true);
         Ustawienia.okno.setVisible(false);
         Multi.okno.setVisible(false);
+        Koniec.okno.setVisible(false);
 
     }
     

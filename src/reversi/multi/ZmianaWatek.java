@@ -3,14 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package reversi.koniec;
+package reversi.multi;
 
 /**
  *
  * @author michal
  */
-public class Koniec {
-    
-    public static Okno okno = new Okno();
+public class ZmianaWatek implements Runnable{
+
+    @Override
+    public void run() {
+        Silnik.zmiana();
+    }
     
 }

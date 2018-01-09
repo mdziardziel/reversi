@@ -114,6 +114,10 @@ public class Silnik implements Runnable{
             ilePionkow(2)==0){
             reversi.koniec.Koniec.okno.setLocation(Multi.okno.getLocation());
             reversi.koniec.Koniec.okno.zmienNapis();
+            Runnable run = new reversi.koniec.Animacja();
+            Thread watek = new Thread(run);
+            reversi.koniec.Animacja.setAnim(true);
+            watek.start();
             reversi.koniec.Koniec.okno.setVisible(true);
         } 
     }

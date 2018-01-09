@@ -75,7 +75,9 @@ public class Przyciski extends JComponent implements ActionListener{
             reversi.menu.Menu.okno.setVisible(true);
         }
         if(source == button2){
-            Silnik.zmiana();
+            Runnable run = new ZmianaWatek();
+            Thread watek = new Thread(run);
+            watek.start();
         }
         if(source == button3){
             Silnik.reset();

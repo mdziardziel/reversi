@@ -31,6 +31,7 @@ public class Napis extends JPanel{
         else if(reversi.multi.Silnik.ktoWygral() == 2 ) text = "Wygrał Gracz 2! Wygrał Gracz 2!Wygrał Gracz 2! Wygrał Gracz 2!";
         else if(reversi.multi.Silnik.ktoWygral() == 3 ) text = "Remis!Remis!Remis!Remis!Remis!Remis!Remis!Remis!Remis!Remis!Remis!Remis!";
         else text = "Coś poszło nie tak!";
+        System.out.println(reversi.multi.Silnik.ktoWygral());
         setLayout(null);  
         for(int i = 0; i <= 10; i++){
             newLabel(i);
