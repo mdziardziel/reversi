@@ -14,13 +14,14 @@ import reversi.settings.Ustawienia;
 /**
  *
  * @author michal
+ * klasa obsługująca mysz
  */
-public class Mysz extends JComponent implements MouseListener{
-    protected int jednostka;
-    protected int ile = 15;
-    protected int poczatekX, poczatekY;
+public class Mysz extends JComponent implements MouseListener{ // dziedziczymy z panelu na którym mysz będzie nasłuchiwać dzięki implementacji MouseListener
+    protected int jednostka;// podzieliłem okno gry na 15 równych jednostek
+    protected int ile = 15; // na tyle
+    protected int poczatekX, poczatekY; // początek kwadratu, który ma te 15x15 jednostek, w stosunku do początku okna
     public Mysz(){
-        if(Ustawienia.getWidth() < Ustawienia.getHeight()){
+        if(Ustawienia.getWidth() < Ustawienia.getHeight()){ // ustawiam wielkośc jednostki, tak aby maksywmalnie wypełnić okno
             jednostka = Ustawienia.getWidth()/(ile);
         }else{
             jednostka = Ustawienia.getHeight()/(ile);
@@ -35,14 +36,11 @@ public class Mysz extends JComponent implements MouseListener{
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        int x = (int)Math.floor(e.getX()/jednostka);
+    public void mouseClicked(MouseEvent e) { // metoda nasłuchująca klikanie myszki
+        int x = (int)Math.floor(e.getX()/jednostka); // pobieram wspolrzędne myszki i zamieniam na numer pola na planszy
         int y = (int)Math.floor(e.getY()/jednostka);
-        if((x>=0 && x <8)&& (y>=0 && y < 8)){
-//            if(Silnik.sprawdzRuch(x, y, true)) {
-//                   
-//            }     
-            Runnable ss = new Silnik(x,y,true);
+        if((x>=0 && x <8)&& (y>=0 && y < 8)){ // jeśli mysz mieści się w polu to rozpoczynam nowy wątek w którym    
+            Runnable ss = new Silnik(x,y,true); //oblicza się czy jest możliwy ruch i jeśli tak to go wykonuje, a później z zmienia gracza
             Thread watek = new Thread(ss);
             watek.start();
         }

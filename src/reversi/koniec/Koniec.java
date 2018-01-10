@@ -8,6 +8,7 @@ package reversi.koniec;
 /**
  *
  * @author michal
+ * klasa ze statycznym obiektem okna, żeby można się było dostać do tego okna z innych obiektów
  */
 public class Koniec {
     

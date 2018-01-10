@@ -14,14 +14,15 @@ import javax.swing.JComponent;
 /**
  *
  * @author michal
+ * klasa zawierająca planszę do gry
  */
 public class Plansza extends JComponent{
     protected int jednostka;
     protected int poczatekX;
     protected int poczatekY;
     protected int ile = 15;
-    protected Color kolorStolu = Ustawienia.getKolorOkna();//new Color(102,101,71);
-    protected Color kolorLicznika = new Color(23,0,0);
+    protected Color kolorStolu = Ustawienia.getKolorOkna();
+    protected Color kolorLicznika = new Color(23,0,0); 
     protected Color kolorRamek = new Color(6,10,13);
     protected Color kolorPlanszy = new Color(214,188,111);
     protected Color kolorPodkladki = kolorPlanszy;
@@ -42,21 +43,16 @@ public class Plansza extends JComponent{
         setLayout(null);
     }
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g) { // rysowanie wszystkich elementów metodą 3d
 	super.paintComponent(g);
 	Graphics2D g2d = (Graphics2D) g;
         
-	//Rectangle2D stol = new Rectangle2D.Double(poczatekX, poczatekY, ile*jednostka, ile*jednostka);
         g.setColor(kolorStolu);
         g.fill3DRect(poczatekX, poczatekY, ile*jednostka, ile*jednostka,true);
         
         //podkladka
         g.setColor(kolorPodkladki);
         g.fill3DRect(poczatekX+jednostka*4, poczatekY+jednostka*4, 10*jednostka, 10*jednostka,true);
-        
-        //plansza
-        //g2d.setColor(kolorPlanszy);
-        //g2d.fillRect(poczatekX+jednostka*5, poczatekY+jednostka*5, 8*jednostka, 8*jednostka);
         
         g.setColor(kolorPlanszy);
         g.fill3DRect(poczatekX+jednostka*5, poczatekY+jednostka*5, 8*jednostka, 8*jednostka,true);
@@ -71,15 +67,11 @@ public class Plansza extends JComponent{
         
         //lewy panel
         g.setColor(kolorStolu);
-        //g.fill3DRect(poczatekX+jednostka, poczatekY+jednostka*4, 2*jednostka, 10*jednostka,true);
         
         
         g2d.setColor(kolorRamek);
-        //g2d.drawRect(poczatekX+jednostka*4, poczatekY+jednostka, 10*jednostka, 2*jednostka);//licznik
-        //g2d.drawRect(poczatekX+jednostka*4, poczatekY+jednostka*4, 10*jednostka, 10*jednostka);//podkladka
-        //g2d.drawRect(poczatekX+jednostka, poczatekY+jednostka*4, 2*jednostka, 10*jednostka);//panel
         
-        for(int i = poczatekX+jednostka*5; i< poczatekX+jednostka*13; i+=jednostka){
+        for(int i = poczatekX+jednostka*5; i< poczatekX+jednostka*13; i+=jednostka){ // rysoanie kratek na planszy
             for(int j = poczatekY+jednostka*5; j< poczatekY+jednostka*13; j+=jednostka){
                 g2d.drawRect(i, j, jednostka, jednostka);
             }

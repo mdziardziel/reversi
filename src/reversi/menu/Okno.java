@@ -12,23 +12,20 @@ import javax.swing.JFrame;
 /**
  *
  * @author michal
+ * klasa tworząca okno menu
  */
 public class Okno extends JFrame{
-    private JComponent przyciski;
-    private JComponent naptlo;
-    public String txt = "Reversi";
+    private JComponent przyciski; //panel z przyciskami
+    private JComponent naptlo; //panel z tłem
+    public String txt = "Reversi"; //tekst na tle
     public Okno(){
-        super("Reversi - Menu");
+        super("Reversi - Menu"); // nazwa okna, przy okazji wykonanie konstruktora klasy JFrame
         
         przyciski = new Przyciski();
         
-        //setLayout(new FlowLayout(FlowLayout.CENTER));
         add(przyciski);
         naptlo = new reversi.koniec.Napis("Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi Reversi");
         add(naptlo);
-        //pack();
-        
-
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);      
         setLocation(Ustawienia.getXLocation(), Ustawienia.getYLocation());
@@ -39,12 +36,9 @@ public class Okno extends JFrame{
         setVisible(false);
     }
     
-    public void changePanelBounds(){
-        //this.remove(przyciski);
+    public void changePanelBounds(){ //metoda zmieniająca położenie przycisków
         przyciski = new Przyciski();
         this.repaint();
-        //przyciski = new Przyciski();
-        //this.add(przyciski);
     }
 
     

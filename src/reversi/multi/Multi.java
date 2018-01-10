@@ -8,6 +8,7 @@ package reversi.multi;
 /**
  *
  * @author michal
+ * klasa zawierająca statyczny obiekt okna, zeby mieć do niego łatwy dostęp
  */
 public class Multi {
     public static Okno okno = new Okno();

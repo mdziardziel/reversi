@@ -14,18 +14,15 @@ import reversi.settings.Ustawienia;
 /**
  *
  * @author michal
+ * klasa zawierająca panel z napisami i metodę, dzięki której można dodać te napisy
  */
-public class Napisy extends JComponent{
-    protected JLabel wynik1;
-    protected JLabel wynik2;
-    protected JLabel czas;
-    
-    protected int jednostka;
-    protected int poczatekX;
+public class Napisy extends JComponent{    
+    protected int jednostka; // podzieliłem planszę na 15 jednostek
+    protected int poczatekX; // początek planszy w stosunku do początku okna
     protected int poczatekY;
     protected int ile = 15;
     public Napisy(){
-        if(Ustawienia.getWidth() < Ustawienia.getHeight()){
+        if(Ustawienia.getWidth() < Ustawienia.getHeight()){ // ustawianie jednostki
             jednostka = Ustawienia.getWidth()/(ile);
         }else{
             jednostka = Ustawienia.getHeight()/(ile);
@@ -38,7 +35,7 @@ public class Napisy extends JComponent{
         setVisible(true);
     }
 
-    public static JLabel dodajNapis(String napis,int lx, int ly, int sx,int sy, int size, Color kolor){
+    public static JLabel dodajNapis(String napis,int lx, int ly, int sx,int sy, int size, Color kolor){ // metoda ułatwiająca dodawanie napisów
         JLabel wynik1 = new JLabel(napis);
         wynik1.setLocation(lx,ly);       
         wynik1.setSize(sx, sy);

@@ -11,31 +11,32 @@ import reversi.multi.Multi;
 /**
  *
  * @author michal
+ * klasa zawierająca ogólne ustawiania oraz statyczny obiekt okna ustawień
  */
 public class Ustawienia{ 
     
-    private static int xLocation = 200;
+    private static int xLocation = 200; // początkowa lokacja okna
     private static int yLocation = 100;
-    private static int width = 1000;
+    private static int width = 1000; // początkowe wymiary okien
     private static int height = 800;
-    private static Color kolor1 = new Color(45, 15, 191);
+    private static Color kolor1 = new Color(45, 15, 191);//kolory pionków
     private static Color kolor2 = new Color(255, 205,0);
     
-    private static Color kolorU1 = new Color(255, 24,0);
+    private static Color kolorU1 = new Color(255, 24,0);//kolory pionków do wyboru
     private static Color kolorU2 = new Color(0, 205,45);
     private static Color kolorU3 = new Color(45, 15, 191);
     private static Color kolorU4 = new Color(255, 205,0);
     private static Color kolorU5 = new Color(0, 180,145);
     private static Color kolorU6 = new Color(255, 100,0);
     
-    private static Color buttonKolor = new Color(255,226,138);
+    private static Color buttonKolor = new Color(255,226,138);//kolor przycisków
     
-    private static Color kolorOkna = new Color(111,203,159);
-    private static Color kolorCyfr = new Color(255,255,255);
+    private static Color kolorOkna = new Color(111,203,159);//kolor tła okien
+    private static Color kolorCyfr = new Color(255,255,255);//kolor cyfr
     
-    public static Okno okno = new Okno();
+    public static Okno okno = new Okno();//statyczny obiekt okna
 
-    private static boolean multi;
+    private static boolean multi; // zmienna która wyznacza czy gramy wtryb multi czy single
     
     public static boolean getMulti(){
         return multi;
@@ -112,7 +113,7 @@ public class Ustawienia{
         height = x;
     }
     
-    public static void zmienRozmiarOkien(int x, int y){
+    public static void zmienRozmiarOkien(int x, int y){//nadaje nowe wymiary okien i restartuje te już stworzone, zeby miary nowy rozmiar
         setWidth(x);
         setHeight(y);      
         Multi.okno = new reversi.multi.Okno();

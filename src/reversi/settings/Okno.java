@@ -11,10 +11,11 @@ import javax.swing.JFrame;
 /**
  *
  * @author michal
+ * klasa zawierjąca okno ustawiń
  */
 public class Okno extends JFrame{
-    private JComponent przyciski;
-    private JComponent naptlo;
+    private JComponent przyciski; // przyciski
+    private JComponent naptlo; //tło
     public Okno(){
         super("Reversi - Ustwienia");
         
@@ -33,7 +34,7 @@ public class Okno extends JFrame{
         setVisible(false);
     }
 
-    public void changePanelBounds(){
+    public void changePanelBounds(){ // zmianapołożeń przycisków
         this.remove(przyciski);
         this.repaint();
         przyciski = new Przyciski();

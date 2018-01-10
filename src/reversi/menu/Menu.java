@@ -7,6 +7,7 @@ package reversi.menu;
 /**
  *
  * @author michal
+ * klasa zawierająca statyczną metodę okno menu, tak aby mieć wszędzie do niego dostęp
  */
 public class Menu {
     public static Okno okno = new Okno();

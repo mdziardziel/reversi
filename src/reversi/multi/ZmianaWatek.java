@@ -11,7 +11,7 @@ package reversi.multi;
  */
 public class ZmianaWatek implements Runnable{
 
-    @Override
+    @Override //nowy wątek dla zamiany, umożliwia animację zmiany pionków podczas oddaniu tury komputerowi
     public void run() {
         Silnik.zmiana();
     }

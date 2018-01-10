@@ -22,19 +22,18 @@ import reversi.settings.Ustawienia;
 /**
  *
  * @author michal
+ * w tej klasie tworzymy animacje na ekranie po rozgrywce
  */
 public class Animacja implements Runnable{
-    private static boolean animacja = false;
-    private static long startTime;
-    private static int obW = 165;
-    private static int obH = 200;
-    private static int ileO = 15;
-    private int nx[] = new int[ileO];
-    private int ny[] = new int[ileO];
-    private int sx[] = new int[ileO];
-    private int sy[] = new int[ileO];
+    private static boolean animacja = false; //żywotność wątku animacji true - może istanieć, false kończy się
+    private static int obW = 165; //szerokość animowanego obrazka
+    private static int obH = 200; //wysokość
+    private static int ileO = 15; //ilość animowanych obrazków
+    private int nx[] = new int[ileO]; //tablica z nwymi położeniami obrazków d których dążom (x)
+    private int ny[] = new int[ileO]; //y
+    private int sx[] = new int[ileO]; //obecne położenie obrazka (x)
+    private int sy[] = new int[ileO]; //y
     public Animacja(){
-        startTime = System.currentTimeMillis();
     }
     public static boolean getAnim(){
         return animacja;
@@ -53,7 +52,7 @@ public class Animacja implements Runnable{
     }
     
     
-    private void spij(int n){
+    private void spij(int n){ //usypia wątek na określony czas ms
                 try{
             Thread.sleep(n);
         }catch(InterruptedException e){
@@ -62,28 +61,28 @@ public class Animacja implements Runnable{
     }
     
     @Override
-    public void run() {
+    public void run() { // odpala się przy tworzeniu nowego wątku
         Random g = new Random();
-        for(int i = 0; i < ileO; i++){
+        for(int i = 0; i < ileO; i++){ //losowanie obecnych lokalizacji obrazków i tych do których będą podązać
             nx[i] = g.nextInt(Ustawienia.getWidth()-obW);
             ny[i] = g.nextInt(Ustawienia.getHeight()-obH);
             sx[i] = g.nextInt(Ustawienia.getWidth()-obW);
             sy[i] = g.nextInt(Ustawienia.getHeight()-obH);
-            Koniec.okno.picLabel[i].setLocation(sx[i], sy[i]);
+            Koniec.okno.picLabel[i].setLocation(sx[i], sy[i]); // ustawianie lokalizacji obrazków
         }
-       while(animacja){
+       while(animacja){ 
            for(int i = 0; i < ileO; i++){
-                if(sx[i]<nx[i])sx[i]++;
+                if(sx[i]<nx[i])sx[i]++; //dodawanie piksela lub odejmowanie w zależności od nowej i starej pozycji
                 else if(sx[i]>nx[i])sx[i]--;
                 if(sy[i]<ny[i])sy[i]++;
                 else if(sy[i]>ny[i])sy[i]--;       
                 Koniec.okno.picLabel[i].setLocation(sx[i], sy[i]);
-                if(sx[i]==nx[i] && sy[i]==ny[i]){
+                if(sx[i]==nx[i] && sy[i]==ny[i]){ //jeśli obiekt dotarł do nowej lokalizacji to losujemy mu nową
                     nx[i] = g.nextInt(Ustawienia.getWidth()-obW);
                     ny[i] = g.nextInt(Ustawienia.getHeight()-obH);
                 }
            }
-         spij(5);
+         spij(5);//ustalanie tempa animacji
 
      }
     }

@@ -14,6 +14,7 @@ import reversi.settings.Ustawienia;
 /**
  *
  * @author michal
+ * zawiera animację licznika
  */
 public class Ruch extends JComponent{
     protected int ile = 15;
@@ -40,12 +41,11 @@ public class Ruch extends JComponent{
         super.paintComponent(g);
 	Graphics2D g2d = (Graphics2D) g;
         
-	//Rectangle2D stol = new Rectangle2D.Double(poczatekX, poczatekY, ile*jednostka, ile*jednostka);
         g2d.setColor(zmian);
-        if(Silnik.getRuch()==1){           
+        if(Silnik.getRuch()==1){ //jeśli ruch należy do zawodnika 1, to wtedy po jego stronie jest wyższy przycisk od licznika          
             g.fillRect(0, (int)(jednostka/2), 4*jednostka, (int)(jednostka/2));
             g.fill3DRect(jednostka*6, (int)(jednostka -jednostka/6), 4*jednostka, (int)(jednostka/6),true);
-        }else{
+        }else{//jeśli należy do 2 to na odwrót
             g.fill3DRect(0, (int)(jednostka - jednostka/6), 4*jednostka, (int)(jednostka/6),true);
             g.fill3DRect(jednostka*6, (int)(jednostka/2), 4*jednostka, (int)(jednostka/2),true);
         }

@@ -19,6 +19,9 @@ public class Reversi {
 
     /**
      * @param args the command line arguments
+     * Klasa inicjalizująca
+     * tworzymy nowy wątek dla stopera
+     * ustawiamy na niewidoczne wszystkie okna oprócz menu
      */
     public static void main(String[] args) {       
         Runnable timer = new reversi.multi.Timer();

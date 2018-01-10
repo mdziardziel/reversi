@@ -16,6 +16,7 @@ import reversi.settings.Ustawienia;
 /**
  *
  * @author michal
+ * klasa zawierająca przyciski
  */
 public class Przyciski extends JComponent implements ActionListener{
    protected int jednostka;
@@ -26,7 +27,7 @@ public class Przyciski extends JComponent implements ActionListener{
    protected JButton button2;
    protected JButton button3;
    protected JButton button4;
-   protected JTextField timeField;
+   protected JTextField timeField; // pole tekstowe pobierające ilość czasu do minutników
     
     public Przyciski() {
         if(Ustawienia.getWidth() < Ustawienia.getHeight()){
@@ -40,13 +41,14 @@ public class Przyciski extends JComponent implements ActionListener{
         setSize(jednostka*2,jednostka*10); 
         setLayout(null);
         
-        
+        //tworzenie przycisków i nadawanie nazw
         button1= new JButton("Menu");
         button2 = new JButton("Poddaj ruch");
         button3 = new JButton("Od nowa");
         button4 = new JButton("Minutnik");
-        timeField = new JTextField();
+        timeField = new JTextField(); // pole tekstowe
         
+        //nadawanie właściwości
         timeField.setBounds(0, jednostka*8, jednostka*2, jednostka/2);
         add(timeField);
         addButton(button1,0,jednostka,jednostka*2,jednostka);
@@ -58,7 +60,7 @@ public class Przyciski extends JComponent implements ActionListener{
     }
     
 
-    public void addButton(JButton button, int xL, int xY,int bW,int bH){
+    public void addButton(JButton button, int xL, int xY,int bW,int bH){ // metoda ułatwiająca dodawanie przycisków
         button.setBounds(xL,xY,bW, bH);
         button.addActionListener(this);
         button.setBackground(reversi.settings.Ustawienia.getButtonKolor());
@@ -66,35 +68,34 @@ public class Przyciski extends JComponent implements ActionListener{
     }
     
     @Override
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e){ // nasłuchiwanie przycisków
         Object source = e.getSource();
         
-        if(source == button1){
+        if(source == button1){ // powrót do menu
             Multi.okno.setVisible(false);
             reversi.menu.Menu.okno.setLocation(Multi.okno.getLocation());
             reversi.menu.Menu.okno.setVisible(true);
         }
-        if(source == button2){
+        if(source == button2){ //oddanie ruchu przeciwnikowi
             Runnable run = new ZmianaWatek();
             Thread watek = new Thread(run);
             watek.start();
         }
         if(source == button3){
-            Silnik.reset();
-            Multi.okno.resetPionkow();
-            //Multi.okno.changeKolorRuch(Silnik.getRuch());              
+            Silnik.reset(); //gra od nowa
+            Multi.okno.resetPionkow();            
         }
-        if(source == button4){
-            String text = timeField.getText();
+        if(source == button4){ // ustawienie minutników
+            String text = timeField.getText();//pobieranie stringa z pola tekstowego
             int sec;
             try{
-                sec = Integer.parseInt(text);
+                sec = Integer.parseInt(text); //sprawdzamy czy można sparsować do inta, jeśli nie to łapiemy błąd
             }catch(NumberFormatException ex){
                 System.out.println("Źle wpisana wartość");
-                sec = 60*5;
+                sec = 60*5; // jeśli będzie bład to ustawiamy domyślny czas 5 minut
             }
-            if(sec<30)sec=sec*60;
-            Timer.setStoper(sec);
+            if(sec<15)sec=sec*60; // jeśli ustaliliśmy czas mniejszy od 15, to program zakłada, że zostały podane minuty
+            Timer.setStoper(sec); //ustawiamy minutniki na dny czas
         }
         
     }
